@@ -1,0 +1,116 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barbara Bombachini | Photo | Web</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/app.css">
+  </head>
+  <body>
+
+    <div id="container">
+
+      <div class="row">
+        <div id="nav-bar" class="small-12 columns">
+          <div id="hamburg" data-responsive-toggle="hamb-menu3" data-hide-for="medium">
+            <button id="button" type="button" data-toggle="hamb-menu3">
+              <span class="icon"></span>
+              <span class="icon"></span>
+              <span class="icon"></span>
+              <span class="icon"></span>
+            </button>
+          </div>
+
+
+        <img src="img/brand.svg" id="logo" alt="Barbara Bombachini Logo">
+        <div id="hamb-menu-web" class="hamb-menu3 web">
+          <nav id="nav">
+            <ul id="menu" class="medium-horizontal menu" data-toggle-menu>
+              <li><a id="photo" href="#">PHOTOGRAPHY</a></li>
+              <li><a href="index.html">WEB DEV</a></li>
+              <li><a href="about.html">ABOUT</a></li>
+              <li><a href="#">CONTACT</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+
+      <!-- PAGE CONTENT STARTS HERE -->
+
+      <div id="contact" class="row fluid">
+        <div id="padTopBot" class="small-8 medium-6 large-4 small-centered">
+          <h1>Get in touch!</h1>
+          <form action="post">
+            <label for="">Name</label>
+            <input type="text">
+            <label for="">Email</label>
+            <input type="text">
+            <label for="">Subject</label>
+            <input type="text">
+            <label for="">Message</label>
+            <textarea name="name" rows="8" cols="80"></textarea>
+            <button type="submit">Send</button>
+          </form>
+        </div>
+      </div>
+
+      <div id="text">
+        <span class="contact-page">contact</span>
+      </div>
+
+    <footer>
+      <div class="footer contact"> <!-- APPLY THIS CLASS ON FOOTER FOR CONTACT PAGE ONLY -->
+        <span class="fa-stack fa-lg">
+          <i class="fa fa-circle fa-stack-2x fa-inverse"></i>
+          <i class="fa fa-github fa-stack-2x" aria-hidden="true"></i>
+        </span>
+        <span class="fa-stack fa-lg">
+          <i class="fa fa-circle fa-stack-2x"></i>
+          <i class="fa fa-instagram fa-stack-1x fa-inverse" aria-hidden="true"></i>
+        </span>
+        <span class="fa-stack fa-lg">
+          <i class="fa fa-circle fa-stack-2x"></i>
+          <i class="fa fa-facebook fa-stack-1x fa-inverse" aria-hidden="true"></i>
+        </span>
+      </div>
+    </footer>
+
+    <!-- container ends here -->
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.2/TweenMax.min.js"></script>
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/what-input/dist/what-input.js"></script>
+    <script src="bower_components/foundation-sites/dist/js/foundation.js"></script>
+    <script src="js/app.js"></script>
+    <!-- <script>
+
+
+    function init() {
+    var photo = document.querySelector('#photo');
+}
+
+    function shrink(){
+        var bar = document.querySelector('#nav-bar');
+        var content = document.querySelector('#content');
+        var nav = document.querySelector('#nav');
+        var land = document.querySelector('#landing');
+        var xheight = window.innerHeight;
+        var tl = new TimelineLite();
+
+        tl.to(nav,1,{display:"none", ease:Expo});
+        tl.to(land,1,{display: "none"});
+        tl.to(bar,2,{width:"15%", ease:Circ});
+        tl.to(bar,2,{height:xheight, float: "left", ease:Circ});
+        tl.to(content,2,{display:"block"});
+      }
+
+    window.addEventListener('load', init,false);
+    photo.addEventListener('click', shrink,false);
+
+    </script> -->
+  </body>
+</html>

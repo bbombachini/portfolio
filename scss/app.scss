@@ -260,6 +260,7 @@ footer.social{
   background-color: $lighter;
   color: #fff;
   padding: 10px;
+  text-align: center;
     .honeycomb {
       margin: 0 auto;
       text-align: center;
@@ -325,6 +326,9 @@ footer.social{
         border-bottom: 7px solid $grey;
       }
     }
+  }
+  #result {
+    padding: 5vw 0;
   }
 }
 
@@ -506,23 +510,6 @@ form {
         }
       }
     }
-  // ul {
-  //   display: flex;
-  //   flex-flow: row wrap;
-  //   justify-content: center;
-  //   align-items: center;
-  // li {
-  //   list-style: none;
-  //   padding: 2%;
-  // a {
-  //   color: $green;
-  //   transition: all 0.4s ease;
-  // }
-  // a:hover {
-  //   color: $purple;
-  // }
-  //   }
-  // }
 }
 
 #copyright{
@@ -547,6 +534,9 @@ form {
 
 //Screen breaks at 640px
 @media screen and (min-width:40rem){
+  body{
+    background-image: none;
+  }
   #text {
     position: relative;
     span {
@@ -569,7 +559,8 @@ form {
     height: 15vw;
     background-color: transparent;
     #logo {
-      padding: 1%;
+      width: 30vw;
+      padding: 5%;
     }
     #hamb-menu-web{
       height: auto;
@@ -594,6 +585,16 @@ form {
           margin-right: 10px;
         }
       }
+    }
+  }
+  #result {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    .icon {
+      align-self: center;
+      max-width: 130px;
+      max-height: 130px;
+      // float: left;
     }
   }
   #containerPhoto {
@@ -633,11 +634,11 @@ form {
       ul {
         li {
           a {
-            width: 3rem;
-            height: 3rem;
+            width: 6rem;
+            height: 6rem;
             i {
-              font-size: 3rem;
-              top: 0.45rem;
+              font-size: 4rem;
+              top: 1rem;
             }
           }
         }

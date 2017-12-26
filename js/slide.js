@@ -6,15 +6,4 @@ var slides = {
     "torres_del_paine-3515.jpg",
     "torres_del_paine-3518.jpg"
   ]
-}
-
-var work = {
-  images: [
-    "icon.png",
-    "icon2.png"
-  ],
-  text: [
-    "",
-    ""
-  ]
-}
+};

@@ -25,6 +25,54 @@
     }
   }
 
+  function howIWork(){
+    var newReq = createRequest();
+    if(newReq===null) {
+			alert("Please update your browser to a more modern one!");
+			return;
+		}
+		let url = 'admin/controller.php?steps';
+		newReq.onreadystatechange = newResp;
+		newReq.open("GET", url, true);
+		newReq.send();
+
+     function newResp() {
+   		if(newReq.readyState ===4 || newReq.status === 'complete') {
+             // console.log(newReq.responseText);
+             var newjson = JSON.parse(newReq.responseText);
+             var result = document.querySelector('#result');
+             var steps = document.querySelectorAll('.steps');
+
+             steps.forEach((p , index) => {
+               p.addEventListener('click', readMe, false);
+             });
+
+             function readMe(evt){
+                 // console.log(evt);
+                 while(result.firstChild){
+                  result.removeChild(result.firstChild);
+                 }
+                 let i = evt.target.id;
+                 if(screenSize == 'medium' || screenSize == 'large'){
+                   let icon = document.createElement('img');
+                   icon.classList.add('icon');
+                   icon.src = "img/"+ newjson[i].steps_img;
+                   result.appendChild(icon);
+                 }
+                 let newDiv = document.createElement('div');
+                 let title = document.createElement('h3');
+                 title.innerHTML = newjson[i].steps_title;
+                 let txt = document.createElement('p');
+                 txt.innerHTML = newjson[i].steps_desc;
+                 newDiv.append(title, txt);
+                 result.appendChild(newDiv);
+                 result.scrollIntoView({behavior: "smooth", block: "center", inline: "nearest"});
+               }
+            }
+        }
+      }
+
+
   function getScreenSize() {
     if(window.innerWidth < MEDIUM) {
       screenSize = 'small';
@@ -44,7 +92,7 @@
 			alert("Please update your browser to a more modern one!");
 			return;
 		}
-		var url = 'admin/controller.php';
+		var url = 'admin/controller.php?projects';
 		request.onreadystatechange = statusResponse;
 		request.open("GET", url, true);
 		request.send();
@@ -80,14 +128,14 @@
 			alert("Please update your browser to a more modern one!");
 			return;
 		}
-		var url = 'admin/controller2.php';
+		var url = 'admin/controller.php?language';
 		hexagon.onreadystatechange = hexResponse;
 		hexagon.open("GET", url, true);
 		hexagon.send();
   }
   function hexResponse(){
     if(hexagon.readyState ===4 || hexagon.status === 'complete') {
-          console.log(hexagon.responseText);
+          // console.log(hexagon.responseText);
           var jsonlang = JSON.parse(hexagon.responseText);
           var honey = document.querySelector('.honeycomb');
 
@@ -137,4 +185,6 @@
   // photo.addEventListener('click', styleChange,false);
   window.addEventListener('resize', getScreenSize, false);
   menu.addEventListener('click', menuOpen, false);
+  howIWork.call(document.querySelector('#work'));
+
 })();

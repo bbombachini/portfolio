@@ -6,6 +6,8 @@
 	error_reporting(0);
 	header('Content-Type: application/json');
 
+
+if(isset($_GET['projects'])) {
 	$query = "SELECT project_id, project_name, project_cover FROM tbl_projects";
 	$result = mysqli_query($link, $query);
 
@@ -15,6 +17,31 @@
 		$rows[] = $row;
 	}
 	echo json_encode($rows);
+}
+
+if(isset($_GET['language'])) {
+		$query = "SELECT * FROM tbl_language";
+		$result = mysqli_query($link, $query);
+
+		$rows = array();
+
+		while($row = mysqli_fetch_assoc($result)) {
+			$rows[] = $row;
+		}
+		echo json_encode($rows);
+	}
+
+	if(isset($_GET['steps'])) {
+			$newquery = "SELECT * FROM tbl_steps";
+			$newresult = mysqli_query($link, $newquery);
+
+			$rows = array();
+
+			while($row = mysqli_fetch_assoc($newresult)) {
+				$rows[] = $row;
+			}
+			echo json_encode($rows);
+		}
 
 // 	if(isset($_GET['project'])) { //see if there's a parameter called carModel
 // 	$proj = $_GET['project'];

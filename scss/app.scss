@@ -714,9 +714,9 @@ form {
     padding: 5vw 0 0 0;
     #work{
       grid-gap: 4vw 4vw;
-      padding: 5vw;
+      padding: 4vw;
       .steps{
-        padding: 0 10% 30% 40%;
+        padding: 0 10% 30% 50%;
         p {
           font-size: 6vw;
         }
@@ -727,9 +727,10 @@ form {
     }
   }
   #portfolio{
-    padding: 30px 0;
+    padding: 40px 20px;
     #projects{
         grid-template-columns: 1fr 1fr 1fr;
+        grid-gap: 20px;
     }
   }
   .social {

@@ -99,14 +99,14 @@
 	}
 	function statusResponse() {
 		if(request.readyState ===4 || request.status === 'complete') {
-          // console.log(request.responseText);
+          console.log(request.responseText);
           var jsondoc = JSON.parse(request.responseText);
           var projects = document.querySelector('#projects');
 
-          jsondoc.forEach(({project_id, project_name, project_cover}) =>{
+          jsondoc.forEach(({project_id, project_name, project_thumb}) =>{
             let newDiv = document.createElement("div");
             let newImg = document.createElement("img");
-            newImg.src = 'img/'+project_cover;
+            newImg.src = 'img/'+screenSize+project_thumb;
             newImg.dataset.id = project_id;
       			let newResult = document.createElement("p");
       			newResult.innerHTML = project_name;
@@ -180,6 +180,7 @@
   //     tl.to(content,2,{display:"block"});
   //   }
   window.addEventListener('load', init,false);
+  // window.addEventListener('resize', init,false);
   // window.addEventListener('load', slideInit,false);
   // photo.addEventListener('click', shrink,false);
   // photo.addEventListener('click', styleChange,false);

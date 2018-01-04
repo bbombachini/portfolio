@@ -8,7 +8,7 @@
 
 
 if(isset($_GET['projects'])) {
-	$query = "SELECT project_id, project_name, project_cover FROM tbl_projects";
+	$query = "SELECT project_id, project_name, project_thumb FROM tbl_projects";
 	$result = mysqli_query($link, $query);
 
 	$rows = array();

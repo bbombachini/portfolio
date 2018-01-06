@@ -8,7 +8,7 @@
 
 
 if(isset($_GET['projects'])) {
-	$query = "SELECT project_id, project_name, project_cover FROM tbl_projects";
+	$query = "SELECT project_id, project_name, project_thumb FROM tbl_projects";
 	$result = mysqli_query($link, $query);
 
 	$rows = array();
@@ -17,6 +17,16 @@ if(isset($_GET['projects'])) {
 		$rows[] = $row;
 	}
 	echo json_encode($rows);
+}
+
+if(isset($_GET['proj'])) {
+	$catch = $_GET['proj'];
+	$query = "SELECT * FROM tbl_projects WHERE project_id=".$catch;
+	$result = mysqli_query($link, $query);
+
+	$row = mysqli_fetch_assoc($result);
+
+	echo json_encode($row);
 }
 
 if(isset($_GET['language'])) {

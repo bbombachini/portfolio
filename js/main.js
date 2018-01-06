@@ -14,6 +14,7 @@
     getScreenSize();
     openProjects();
     openHex();
+    howIWork();
     }
 
   function menuOpen() {
@@ -26,50 +27,84 @@
   }
 
   function howIWork(){
-    var newReq = createRequest();
-    if(newReq===null) {
-			alert("Please update your browser to a more modern one!");
-			return;
-		}
-		let url = 'admin/controller.php?steps';
-		newReq.onreadystatechange = newResp;
-		newReq.open("GET", url, true);
-		newReq.send();
+    // var newReq = createRequest();
+    // if(newReq===null) {
+		// 	alert("Please update your browser to a more modern one!");
+		// 	return;
+		// }
+		// let url = 'admin/controller.php?steps';
+		// newReq.onreadystatechange = newResp;
+		// newReq.open("GET", url, true);
+		// newReq.send();
+		let promise = get('admin/controller.php?steps');
 
-     function newResp() {
-   		if(newReq.readyState ===4 || newReq.status === 'complete') {
-             // console.log(newReq.responseText);
-             var newjson = JSON.parse(newReq.responseText);
-             var result = document.querySelector('#result');
-             var steps = document.querySelectorAll('.steps');
+    promise.then(function(steps){
+      var newjson = steps;
+      var result = document.querySelector('#result');
+      var steps = document.querySelectorAll('.steps');
 
-             steps.forEach((p , index) => {
-               p.addEventListener('click', readMe, false);
-             });
-
-             function readMe(evt){
-                 // console.log(evt);
-                 while(result.firstChild){
-                  result.removeChild(result.firstChild);
-                 }
-                 let i = evt.target.id;
-                 if(screenSize == 'medium' || screenSize == 'large'){
-                   let icon = document.createElement('img');
-                   icon.classList.add('icon');
-                   icon.src = "img/"+ newjson[i].steps_img;
-                   result.appendChild(icon);
-                 }
-                 let newDiv = document.createElement('div');
-                 let title = document.createElement('h3');
-                 title.innerHTML = newjson[i].steps_title;
-                 let txt = document.createElement('p');
-                 txt.innerHTML = newjson[i].steps_desc;
-                 newDiv.append(title, txt);
-                 result.appendChild(newDiv);
-                 result.scrollIntoView({behavior: "smooth", block: "center", inline: "nearest"});
-               }
-            }
+      steps.forEach((p , index) => {
+        p.addEventListener('click', readMe, false);
+      });
+      function readMe(evt){
+          // console.log(evt);
+          while(result.firstChild){
+           result.removeChild(result.firstChild);
+          }
+          let i = evt.target.id;
+          if(screenSize == 'medium' || screenSize == 'large'){
+            let icon = document.createElement('img');
+            icon.classList.add('icon');
+            icon.src = "img/"+ newjson[i].steps_img;
+            result.appendChild(icon);
+          }
+          let newDiv = document.createElement('div');
+          let title = document.createElement('h3');
+          title.innerHTML = newjson[i].steps_title;
+          let txt = document.createElement('p');
+          txt.innerHTML = newjson[i].steps_desc;
+          newDiv.append(title, txt);
+          result.appendChild(newDiv);
+          result.scrollIntoView({behavior: "smooth", block: "center", inline: "nearest"});
         }
+    }).catch(function(error){
+      console.log(error);
+    });
+
+     // function newResp() {
+   		// if(newReq.readyState ===4 || newReq.status === 'complete') {
+     //         // console.log(newReq.responseText);
+     //         var newjson = JSON.parse(newReq.responseText);
+     //         var result = document.querySelector('#result');
+     //         var steps = document.querySelectorAll('.steps');
+     //
+     //         steps.forEach((p , index) => {
+     //           p.addEventListener('click', readMe, false);
+     //         });
+     //
+             // function readMe(evt){
+             //     // console.log(evt);
+             //     while(result.firstChild){
+             //      result.removeChild(result.firstChild);
+             //     }
+             //     let i = evt.target.id;
+             //     if(screenSize == 'medium' || screenSize == 'large'){
+             //       let icon = document.createElement('img');
+             //       icon.classList.add('icon');
+             //       icon.src = "img/"+ newjson[i].steps_img;
+             //       result.appendChild(icon);
+             //     }
+             //     let newDiv = document.createElement('div');
+             //     let title = document.createElement('h3');
+             //     title.innerHTML = newjson[i].steps_title;
+             //     let txt = document.createElement('p');
+             //     txt.innerHTML = newjson[i].steps_desc;
+             //     newDiv.append(title, txt);
+             //     result.appendChild(newDiv);
+             //     result.scrollIntoView({behavior: "smooth", block: "center", inline: "nearest"});
+             //   }
+     //        }
+     //    }
       }
 
 
@@ -87,40 +122,120 @@
   }
 
   function openProjects() {
-    request = createRequest();
-    if(request===null) {
-			alert("Please update your browser to a more modern one!");
-			return;
-		}
-		var url = 'admin/controller.php?projects';
-		request.onreadystatechange = statusResponse;
-		request.open("GET", url, true);
-		request.send();
-	}
-	function statusResponse() {
-		if(request.readyState ===4 || request.status === 'complete') {
-          // console.log(request.responseText);
-          var jsondoc = JSON.parse(request.responseText);
-          var projects = document.querySelector('#projects');
+    let promise = get('admin/controller.php?projects');
 
-          jsondoc.forEach(({project_id, project_name, project_cover}) =>{
-            let newDiv = document.createElement("div");
-            let newImg = document.createElement("img");
-            newImg.src = 'img/'+project_cover;
-            newImg.dataset.id = project_id;
-      			let newResult = document.createElement("p");
-      			newResult.innerHTML = project_name;
-      			newDiv.append(newResult, newImg);
-      			projects.appendChild(newDiv);
-          });
-          projects.querySelectorAll("div").forEach((dataset) => {
-            dataset.addEventListener('click', loadProj, false);
-          });
-          function loadProj(index){
-            console.log(index.target.dataset);
+    promise.then(function(projects){
+      var jsondoc = projects;
+      var projects = document.querySelector('#projects');
+
+      jsondoc.forEach(({project_id, project_name, project_thumb}) =>{
+        let newDiv = document.createElement("div");
+        let newImg = document.createElement("img");
+        newImg.src = 'img/'+screenSize+project_thumb;
+        newImg.dataset.id = project_id;
+        let newResult = document.createElement('h3');
+        newResult.classList.add('title');
+        newResult.innerHTML = project_name;
+        newDiv.classList.add('proj-div');
+        newDiv.append(newImg, newResult);
+        projects.appendChild(newDiv);
+      });
+      projects.querySelectorAll("div").forEach((dataset) => {
+        dataset.addEventListener('click', loadProj, false);
+      });
+
+      function loadProj(index){
+        console.log(index.target.dataset.id);
+        let openNew = get('admin/controller.php?proj='+index.target.dataset.id);
+
+        openNew.then(function(project){
+          if(project !== null){
+            var body = document.body;
+            let box = document.querySelector('.lightbox');
+            let boxCover = box.querySelector('.cover-img');
+            let boxImg = box.querySelector('.box-img');
+            let boxClose = document.querySelector('.close-box');
+            let boxHeader = box.querySelector('.header');
+            let text = box.querySelector('.proj-text');
+            while(text.firstChild) {
+               text.removeChild(text.firstChild);
+             }
+            body.classList.add('noscroll');
+            box.style.display = "block";
+            boxCover.src = "img/"+ project.project_cover;
+            boxImg.src = "img/"+screenSize+ project.project_img;
+            boxHeader.style.backgroundColor = project.project_colour;
+            let boxTitle = document.createElement('h1');
+            boxTitle.innerHTML = project.project_name;
+            text.appendChild(boxTitle);
+              if(project.project_client !== null){
+                var client = document.createElement('p');
+                client.innerHTML = project.project_client;
+                text.appendChild(client);
+              }
+            let boxDesc = document.createElement('p');
+            boxDesc.innerHTML = project.project_description;
+            text.appendChild(boxDesc);
+              if(project.project_url !== null){
+
+                let url = document.createElement('a');
+                let text = box.querySelector('.proj-text');
+                url.href = project.project_url;
+                url.innerHTML = project.project_url;
+                text.appendChild(url);
+              }
+            boxClose.addEventListener('click', closeBox, false);
+
+            function closeBox() {
+              box.style.display = 'none';
+              body.classList.remove('noscroll');
+              // document.body.style.overflow = "scroll";
+            }
           }
-		}
-  }
+        }).catch(function(error){
+          console.log(error);
+        });
+      }
+
+    }).catch(function(error){
+      console.log(error);
+    });
+    // request = createRequest();
+    // if(request===null) {
+		// 	alert("Please update your browser to a more modern one!");
+		// 	return;
+		// }
+		// var url = 'admin/controller.php?projects';
+		// request.onreadystatechange = statusResponse;
+		// request.open("GET", url, true);
+		// request.send();
+
+	}
+	// function statusResponse() {
+	// 	if(request.readyState ===4 || request.status === 'complete') {
+  //         // console.log(request.responseText);
+  //         var jsondoc = JSON.parse(request.responseText);
+  //         var projects = document.querySelector('#projects');
+  //
+  //         jsondoc.forEach(({project_id, project_name, project_thumb}) =>{
+  //           let newDiv = document.createElement("div");
+  //           let newImg = document.createElement("img");
+  //           newImg.src = 'img/'+screenSize+project_thumb;
+  //           newImg.dataset.id = project_id;
+  //     			let newResult = document.createElement("p");
+  //     			newResult.innerHTML = project_name;
+  //     			newDiv.append(newResult, newImg);
+  //     			projects.appendChild(newDiv);
+  //         });
+  //         projects.querySelectorAll("div").forEach((dataset) => {
+  //           dataset.addEventListener('click', loadProj, false);
+  //         });
+  //         function loadProj(index){
+  //           console.log(index.target.dataset);
+  //           console.log
+  //         }
+	// 	}
+  // }
 
   function openHex(){
     hexagon = createRequest();
@@ -180,11 +295,12 @@
   //     tl.to(content,2,{display:"block"});
   //   }
   window.addEventListener('load', init,false);
+  // window.addEventListener('resize', init,false);
   // window.addEventListener('load', slideInit,false);
   // photo.addEventListener('click', shrink,false);
   // photo.addEventListener('click', styleChange,false);
   window.addEventListener('resize', getScreenSize, false);
   menu.addEventListener('click', menuOpen, false);
-  howIWork.call(document.querySelector('#work'));
+  // howIWork.call(document.querySelector('#work'));
 
 })();

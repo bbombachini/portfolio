@@ -4,45 +4,56 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="apple-touch-icon" sizes="144x144" href="img/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="img/favicon/favicon-16x16.png">
+    <link rel="manifest" href="img/favicon/manifest.json">
+    <link rel="mask-icon" href="img/favicon/safari-pinned-tab.svg" color="#5bbad5">
+    <link rel="shortcut icon" href="img/favicon/favicon.ico">
+    <meta name="msapplication-config" content="img/favicon/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
     <title>Barbara Bombachini | Photo | Web</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/app.css">
   </head>
   <body>
+    <noscript>
+      <style>html{display:none;}</style>
+      <meta http-equiv="refresh" content="0.0;url=nojs_index.php">
+    </noscript>
+    <header>
+      <div id="container">
+        <div class="row">
+          <div id="nav-bar" class="small-12 columns">
+              <img src="img/bombachini_logo.svg" id="logo" alt="Barbara Bombachini Logo">
+            <div id="hamburg" data-responsive-toggle="hamb-menu3" data-hide-for="medium">
+              <button id="button" type="button" data-toggle="hamb-menu3">
+                <span class="icon"></span>
+                <span class="icon"></span>
+                <span class="icon"></span>
+                <span class="icon"></span>
+              </button>
+            </div>
 
-    <div id="container">
-
-      <div class="row">
-        <div id="nav-bar" class="small-12 columns">
-          <div id="hamburg" data-responsive-toggle="hamb-menu3" data-hide-for="medium">
-            <button id="button" type="button" data-toggle="hamb-menu3">
-              <span class="icon"></span>
-              <span class="icon"></span>
-              <span class="icon"></span>
-              <span class="icon"></span>
-            </button>
+          <div id="hamb-menu-web" class="hamb-menu3 web">
+            <nav id="nav">
+              <ul id="menu" class="medium-horizontal menu" data-toggle-menu>
+                <li><a id="photo" href="#">PHOTOGRAPHY</a></li>
+                <li><a href="index.html">WEB DEV</a></li>
+                <li><a href="#">ABOUT</a></li>
+                <li><a href="contact.html">CONTACT</a></li>
+              </ul>
+            </nav>
           </div>
-
-
-        <img src="img/brand.svg" id="logo" alt="Barbara Bombachini Logo">
-        <div id="hamb-menu-web" class="hamb-menu3 web">
-          <nav id="nav">
-            <ul id="menu" class="medium-horizontal menu" data-toggle-menu>
-              <li><a id="photo" href="#">PHOTOGRAPHY</a></li>
-              <li><a href="index.html">WEB DEV</a></li>
-              <li><a href="#">ABOUT</a></li>
-              <li><a href="contact.html">CONTACT</a></li>
-            </ul>
-          </nav>
         </div>
       </div>
-    </div>
+    </header>
 
       <!-- PAGE CONTENT STARTS HERE -->
 
       <div class="row fluid">
         <div class="small-10 small-centered columns">
-          <div class="hide-for-small-only medium-4 large-5 columns">
+          <div class="show-for-small-only small-6 small-centered columns">
             <img src="img/profile_barbara_bombachini.jpg" id="profile" class="float-center" alt="Barbara Bombachini Profile Picture">
           </div>
           <div class="bio">
@@ -54,12 +65,7 @@ She fell in love by adventures when she backpacked by her own for one sabbatical
           </div>
         </div>
 
-        <div class="row">
-          <div class="small-10 medium-10 small-centered medium-centered columns" id="quote">
-              <p>“Give up defining yourself – to yourself or to others. When you define you, you are limiting yourself. You can only lose something that you have, but you cannot lose something that you are.”</p>
-              <h4>Eckhart Tolle</h4>
-          </div>
-        </div>
+
       </div>
 
       <div id="text" class="about">
@@ -67,19 +73,36 @@ She fell in love by adventures when she backpacked by her own for one sabbatical
       </div>
 
     <footer class="about">
-      <div class="footer"> <!-- APPLY THIS CLASS ON FOOTER FOR ABOUT PAGE ONLY -->
-        <span class="fa-stack fa-lg icon">
-          <i id="bepurple" class="fa fa-circle fa-stack-2x"></i>
-          <i class="fa fa-github fa-stack-2x fa-inverse" aria-hidden="true"></i>
-        </span>
-        <span class="fa-stack fa-lg icon">
-          <i class="fa fa-circle fa-stack-2x"></i>
-          <i class="fa fa-instagram fa-stack-1x" aria-hidden="true"></i>
-        </span>
-        <span class="fa-stack fa-lg icon">
-          <i class="fa fa-circle fa-stack-2x"></i>
-          <i class="fa fa-facebook fa-stack-1x" aria-hidden="true"></i>
-        </span>
+      <div class="row">
+        <div id="social-about" class="small-12 small-centered columns footer"> <!-- APPLY THIS CLASS ON FOOTER FOR ABOUT PAGE ONLY -->
+          <ul>
+            <li>
+              <a href="https://codepen.io/bbombachini/" target="_blank">
+                  <i class="fa fa-codepen" aria-hidden="true"></i>
+              </a>
+            </li>
+            <li>
+              <a href="https://www.facebook.com/barbara.bombachini" target="_blank">
+                  <i class="fa fa-facebook" aria-hidden="true"></i>
+              </a>
+            </li>
+            <li>
+              <a href="https://github.com/bbombachini" target="_blank">
+                  <i class="fa fa-github fa-inverse" aria-hidden="true"></i>
+              </a>
+            </li>
+            <li>
+              <a href="https://www.instagram.com/bbombachini/" target="_blank">
+                  <i class="fa fa-instagram" aria-hidden="true"></i>
+              </a>
+            </li>
+            <li>
+              <a href="https://www.linkedin.com/in/barbara-bombachini-b61b92aa/" target="_blank">
+                  <i class="fa fa-linkedin" aria-hidden="true"></i>
+              </a>
+            </li>
+          </ul>
+        </div>
       </div>
     </footer>
 
@@ -91,6 +114,7 @@ She fell in love by adventures when she backpacked by her own for one sabbatical
     <script src="bower_components/what-input/dist/what-input.js"></script>
     <script src="bower_components/foundation-sites/dist/js/foundation.js"></script>
     <script src="js/app.js"></script>
+    <script type="text/javascript" src="js/menu.js"></script>
     <!-- <script>
 
 

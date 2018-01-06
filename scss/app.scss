@@ -56,29 +56,29 @@
 .hidden {
   display:none;
 }
-
-body{
-  width: 100%;
-  height: 100%;
-}
+//
+// body{
+//   width: 100%;
+//   height: 100%;
+// }
 .index{
-background-image: url('../img/mobile_mountains.jpg');
-// background-color: $grey;
-background-position:center;
-background-size: cover;
-background-repeat: no-repeat;
-background-attachment:fixed;
+  background-image: url('../img/mobile_mountains.jpg');
+  // background-color: $grey;
+  background-position:center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment:fixed;
 }
 
-#container, #containerPhoto {
+#container, #containerPhoto, #container-about {
   width: 100%;
   position: relative;
   p {
     color: $grey;
   }
 }
-#containerPhoto{
-    height: 100vh;
+#containerPhoto, #container-about {
+  height: 100vh;
 }
 
 #nav-bar {
@@ -381,9 +381,6 @@ background-attachment:fixed;
 form {
   padding-top: 10px;
   margin-bottom: 100px;
-  input[type='text'], textarea, button{
-    border-radius: 30px !important;
-  }
   label{
     text-align: left;
     color: #fff;
@@ -397,46 +394,11 @@ form {
     text-transform: uppercase;
   }
 }
-//style specific to the page the contact footer
-.footer {
-  height: 10vh;
-  width: 100%;
-  clear: both;
-  span {
-    float: right;
-    padding: 20px;
-  }
-}
-.contact {
-  span{
-    color: $yell;
-  }
-}
-.about {
 
-}
-#text {
-  position: relative;
-  span {
-    font-family: 'Medium', 'Helvetica', sans-serif;
-    font-size: 70px;
-    position: absolute;
-    color: $purple;
-    left: 1.8vw;
-    top: -75px;
-  }
-}
-#text .contact-page {
-  color: #fff;
-}
-#text span .about {
-  color: $purple;
-}
 #profile {
+  margin: 30% 0;
   -webkit-clip-path: circle(50% at 50% 50%);
   clip-path: circle(50% at 50% 50%);
-  //transition: all 0.8s ease;
-  // cubic-bezier(1, -1, 0, 2);
 }
 .download {
   cursor: pointer;
@@ -447,10 +409,56 @@ form {
   font-size: 14px;
   font-family: 'Medium', 'Helvetica', 'Arial', sans-serif;
 }
-
-.bio h1 {
-  color: #eee;
+#mainbio{
+  .bio{
+    border: 7px solid $yell;
+    padding: 10%;
+    margin-bottom: 30%;
+    h1 {
+      color: $yell;
+      font-family: 'Medium','Helvetica', 'Arial', sans-serif;
+    }
+  }
 }
+//style footer for mobile
+footer{
+  #text {
+    position: relative;
+    span {
+      font-family: 'Medium', 'Helvetica', sans-serif;
+      font-size: 15vh;
+      position: absolute;
+      color: $lighter;
+      left: 1.8vw;
+      top: -16vh;
+    }
+  }
+  .about {
+    margin-top: 50px;
+    padding: 0;
+    background-color: $lighter;
+  }
+}
+.footer {
+  width: 100%;
+  clear: both;
+  span {
+    float: right;
+    padding: 20px;
+  }
+}
+
+// .contact {
+//   span{
+//     color: $yell;
+//   }
+// }
+
+
+// #text .contact-page {
+//   color: #fff;
+// }
+
 
 #social {
   position: relative;
@@ -486,6 +494,16 @@ form {
 #social-about{
   @extend #social;
   border: none;
+  text-align: center;
+  padding: 0;
+  margin: 5% 0;
+  ul {
+    padding: 0;
+    margin: 0;
+    i{
+      font-size: 5vw;
+    }
+  }
 }
 
 #copyright{
@@ -571,14 +589,8 @@ form {
       }
     }
   }
-  #text {
-    position: relative;
-    span {
-      font-family: 'Medium', 'Helvetica', sans-serif;
-      font-size: 120px;
-      position: absolute;
-      top: -125px;
-    }
+  #profile {
+    margin: 60% 0 40% 0;
   }
   #quote {
     p {
@@ -630,6 +642,7 @@ form {
       }
     }
   }
+
   .work{
     #result {
       display: grid;
@@ -666,12 +679,17 @@ form {
     }
   }
   .footer {
-    height: 18vh;
     span {
     margin: 5px;
     }
   }
   footer {
+    #text {
+      span {
+        font-size: 18vw;
+        top: -19vw;
+      }
+    }
     #social {
       ul {
         li {
@@ -681,6 +699,20 @@ form {
             i {
               font-size: 4rem;
               top: 1rem;
+            }
+          }
+        }
+      }
+    }
+    #social-about{
+      ul {
+        li {
+          a {
+            width: 8vw;
+            height: 8vw;
+            i {
+              font-size: 5vw;
+              top: 1.4vw;
             }
           }
         }
@@ -700,16 +732,13 @@ form {
           padding: 15px 20px;
           font-size: 18px;
         }
-        a:last-child {
-          margin-right: 30px;
-        }
       }
     }
   }
   .sections:nth-child(1){
     background-image: url('../img/largem_mountains.jpg');
   }
-  body{
+body{
     #landing{
       #intro{
         display: grid;
@@ -738,7 +767,7 @@ form {
         }
       }
     }
-  }
+}
   .work{
     padding: 5vw 0 0 0;
     #work{
@@ -762,6 +791,27 @@ form {
         grid-gap: 20px;
     }
   }
+  #container-about{
+    background: url('../img/medium_profile_picture.jpg') no-repeat;
+    background-position: 0 50%;
+  }
+  #mainbio{
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    .bio{
+      margin: 0;
+      padding: 2vh 5vw;
+      text-align: center;
+      h1 {
+        text-align: right;
+        font-size: 1.5rem;
+      }
+    }
+  }
   .social {
     position: relative;
     overflow: hidden;
@@ -776,6 +826,40 @@ form {
     	border-right: 1200px solid transparent;
       z-index: -1;
     }
+  }
+footer{
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  // height: 10vw;
+    #text {
+      span {
+        line-height: 18vh;
+        font-size: 18vh;
+        right: 1.8vw;
+        left: auto;
+        top: -15vh;
+      }
+    }
+      #social-about{
+        padding: 1vw 0;
+        margin: 1vw 0;
+        ul{
+          text-align: left;
+          padding-left: 3vw;
+          li{
+            a{
+              width: 4vw;
+              height: 4vw;
+              i {
+                font-size: 2vw;
+                top: 1vw;
+              }
+            }
+          }
+        }
+      }
   }
 }
 
@@ -806,24 +890,26 @@ form {
       width: 20vw;
       padding: 3%;
     }
-  }
-  #text {
-    position: relative;
-    span {
-      font-family: 'Medium', 'Helvetica', sans-serif;
-      font-size: 200px;
-      position: absolute;
-      top: -210px;
+    #hamb-menu-web{
+      #menu {
+        a:last-child {
+          margin-right: 30px;
+        }
+      }
     }
+  }
+  #container-about{
+    background: url('../img/highmedium_profile_picture.jpg') no-repeat;
+    background-position: 10% 100%;
   }
   #fluent{
     .honeycomb{
-        .hex{
-          opacity: 0.2;
-        }
-        .hex:hover {
-          opacity: 1;
-        }
+      .hex{
+        opacity: 0.2;
+      }
+      .hex:hover {
+        opacity: 1;
+      }
     }
   }
   #portfolio{
@@ -862,9 +948,20 @@ form {
       }
     }
   }
+  footer{
+    #text {
+      span {
+        font-size: 20vh;
+        // top: -21vh;
+      }
+    }
+  }
 }
 //Screen breaks at 1440px
 @media screen and (min-width:90rem){
+  #container-about{
+    background: url('../img/large_profile_picture.jpg') no-repeat;
+  }
   .social {
     #triangle{
       border-right: 1650px solid transparent;
@@ -873,12 +970,24 @@ form {
       margin-top: 10%;
     }
   }
+  #mainbio{
+    .bio{
+      text-align: left;
+      padding: 7vh 5vw;
+      h1 {
+        font-size: 2rem;
+      }
+    }
+  }
 }
 //Screen breaks at 1600px
 @media screen and (min-width:100rem){
   body, #container, #containerPhoto {
     max-width: 1920px;
     margin: 0 auto;
+  }
+  #container-about{
+    background: url('../img/xlarge_profile_picture.jpg') no-repeat;
   }
   body{
     #landing{
@@ -933,6 +1042,14 @@ form {
   .social {
     #triangle{
       border-right: 1950px solid transparent;
+    }
+  }
+  #mainbio{
+    .bio{
+      padding: 6vh 8vw;
+      h1 {
+        font-size: 3rem;
+      }
     }
   }
 }

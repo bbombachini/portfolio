@@ -56,30 +56,32 @@
 .hidden {
   display:none;
 }
-//
-// body{
-//   width: 100%;
-//   height: 100%;
-// }
+
+body{
+  width: 100%;
+  height: 100%;
+}
+//Classes applied on body
 .index{
   background-image: url('../img/mobile_mountains.jpg');
-  // background-color: $grey;
   background-position:center;
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment:fixed;
 }
-
+//Container ID's
 #container, #containerPhoto, #container-about {
   width: 100%;
   position: relative;
+  overflow: hidden;
+  min-height: 100vh;
   p {
     color: $grey;
   }
 }
-#containerPhoto, #container-about {
-  height: 100vh;
-}
+// #containerPhoto, #container-about {
+//   height: 100vh;
+// }
 
 #nav-bar {
   position: relative;
@@ -215,11 +217,10 @@
 }
 
 #landing {
+  height: 100%;
   position: relative;
-  padding: 0;
-  height: inherit;
   #intro {
-    margin-top: 25%;
+    margin: 10vh auto;
     border: 7px solid $yell;
     h6 {
       padding-top: 10%;
@@ -314,7 +315,7 @@
     grid-gap: 5vw 5vw;
     padding: 10vw;
     .steps{
-      padding: 0 5% 20% 40%;
+      padding: 0 5% 10% 20%;
       display: grid;
       border: 7px solid $yell;
       text-align: right;
@@ -366,32 +367,38 @@
 }
 
 #contact {
-  background: rgb(224,204,22); /* Old browsers */
-  background: -moz-linear-gradient(45deg, rgba(224,204,22,1) 0%, rgba(251,144,3,1) 35%, rgba(251,144,3,1) 70%, rgba(224,204,22,1) 100%); /* FF3.6-15 */
-  background: -webkit-linear-gradient(45deg, rgba(224,204,22,1) 0%,rgba(251,144,3,1) 35%,rgba(251,144,3,1) 70%,rgba(224,204,22,1) 100%);/*Chrome10-25,Safari5.1-6 */
-  background: linear-gradient(45deg, rgba(224,204,22,1) 0%,rgba(251,144,3,1) 35%,rgba(251,144,3,1) 70%,rgba(224,204,22,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e0cc16', endColorstr='#e0cc16',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
   color: #fff;
   width: 100vw;
   text-align: center;
-}
-#padTopBot {
-  padding: 30px 0;
-}
-form {
-  padding-top: 10px;
-  margin-bottom: 100px;
-  label{
-    text-align: left;
-    color: #fff;
-    font-family: 'Medium', sans-serif;
+  .instructions{
+    margin: 10vh 5vw 0 5vw;
+    h3{
+      font-size: 1rem;
+      color: $grey;
+    }
   }
-  button {
-    background-color: $purple;
-    padding: 20px 35px;
-    font-family: 'Medium', sans-serif;
-    color: #fff;
-    text-transform: uppercase;
+  .border {
+    border: 7px solid $yell;
+    padding: 5vw;
+    margin: 0 5vw 15vh 5vw;
+    h1 {
+      font-size: 1.5rem;
+      color: $grey;
+    }
+    form {
+      label{
+        text-align: left;
+        color: $grey;
+        font-family: 'Medium', sans-serif;
+      }
+      button {
+        background-color: $yell;
+        padding: 20px 35px;
+        font-family: 'Medium', sans-serif;
+        color: #fff;
+        text-transform: uppercase;
+      }
+    }
   }
 }
 
@@ -416,7 +423,7 @@ form {
     margin-bottom: 30%;
     h1 {
       color: $yell;
-      font-family: 'Medium','Helvetica', 'Arial', sans-serif;
+      font-family: 'Light','Helvetica', 'Arial', sans-serif !important;
     }
   }
 }
@@ -426,11 +433,11 @@ footer{
     position: relative;
     span {
       font-family: 'Medium', 'Helvetica', sans-serif;
-      font-size: 15vh;
+      font-size: 13vh;
       position: absolute;
       color: $lighter;
       left: 1.8vw;
-      top: -16vh;
+      top: -14vh;
     }
   }
   .about {
@@ -439,32 +446,11 @@ footer{
     background-color: $lighter;
   }
 }
-.footer {
-  width: 100%;
-  clear: both;
-  span {
-    float: right;
-    padding: 20px;
-  }
-}
-
-// .contact {
-//   span{
-//     color: $yell;
-//   }
-// }
-
-
-// #text .contact-page {
-//   color: #fff;
-// }
-
-
 #social {
   position: relative;
-  padding: 10%;
-  margin-top: 20%;
-  color: #fff;
+  padding: 10vw;
+  margin: 10vw auto;
+  color: #ccc;
   border: 7px solid $yell;
   ul {
     padding: 10px;
@@ -569,33 +555,26 @@ footer{
 
 //Screen breaks at 640px
 @media screen and (min-width:40rem){
-  body{
-    background-image: none;
     #landing{
       #intro{
-        padding: 15% 0;
-        margin-top: 20%;
+        margin: 25vh auto;
+        padding: 2vw;
+        // margin-top: 20%;
         h6 {
           padding-top: 10%;
-          font-size: 20vw;
+          font-size: 15vw;
           line-height: 15vw;
         }
         h1{
-          font-size: 5vw;
+          font-size: 3vw;
         }
         span {
           text-decoration: line-through;
         }
       }
     }
-  }
   #profile {
     margin: 60% 0 40% 0;
-  }
-  #quote {
-    p {
-    font-size: 1.8vw;
-    }
   }
   .sections:nth-child(1){
     background-image: url('../img/medium_mountains.jpg');
@@ -660,7 +639,6 @@ footer{
     display: grid;
     grid-template-columns: 16% 84%;
     #nav-bar{
-      height: 15vw;
       padding: 0;
       #hamb-menu-photo{
         transform: none;
@@ -678,9 +656,15 @@ footer{
       }
     }
   }
-  .footer {
-    span {
-    margin: 5px;
+  #contact{
+    .instructions{
+      margin: 20vw 5vw 0 5vw;
+    }
+    .border{
+      margin: 0 5vw 15vw 5vw;
+      h1 {
+        font-size: 1.5rem;
+      }
     }
   }
   footer {
@@ -690,21 +674,23 @@ footer{
         top: -19vw;
       }
     }
-    #social {
+  }
+#social {
       ul {
         li {
           a {
-            width: 6rem;
-            height: 6rem;
+            width: 5rem;
+            height: 5rem;
             i {
-              font-size: 4rem;
+              font-size: 3rem;
               top: 1rem;
             }
           }
         }
       }
     }
-    #social-about{
+  #social-about{
+    margin: 2% 0;
       ul {
         li {
           a {
@@ -719,7 +705,7 @@ footer{
       }
     }
   }
-}
+
 //Screen breaks at 1024px
 @media screen and (min-width:64rem){
   #nav-bar {
@@ -738,15 +724,27 @@ footer{
   .sections:nth-child(1){
     background-image: url('../img/largem_mountains.jpg');
   }
-body{
+  .contact{
+    background-color: $grey;
+    position: relative;
+    #nav-bar {
+      #hamb-menu-web{
+        #menu {
+          a {
+            color: #fff;
+          }
+        }
+      }
+    }
+  }
     #landing{
       #intro{
         display: grid;
         grid-template-columns: 20% 1fr 2fr 5%;
         grid-template-rows: 1fr;
         // grid-column-gap: 10px;
-        padding: 10% 0;
-        margin-top: 15%;
+        padding: 6vw 0;
+        margin: 20vw auto 0 auto;
         text-align: left;
         justify-content: space-around;
         #thunder {
@@ -767,14 +765,13 @@ body{
         }
       }
     }
-}
+
   .work{
     padding: 5vw 0 0 0;
     #work{
       grid-gap: 4vw 4vw;
       padding: 4vw;
       .steps{
-        padding: 0 10% 30% 50%;
         p {
           font-size: 6vw;
         }
@@ -802,6 +799,7 @@ body{
     justify-content: center;
     align-content: center;
     align-items: center;
+    margin-bottom: 0;
     .bio{
       margin: 0;
       padding: 2vh 5vw;
@@ -810,6 +808,37 @@ body{
         text-align: right;
         font-size: 1.5rem;
       }
+    }
+  }
+  #contact{
+    // position: relative;
+    overflow: hidden;
+    .border{
+      margin: 15vw 0 20vw 0;
+      padding: 2vw 5vw;
+      h1{
+        color: #fff;
+      }
+      form{
+        // margin: 0;
+        label{
+          color: #fff;
+        }
+        input, textarea{
+          opacity: 0.6;
+        }
+      }
+    }
+    #triangle{
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 0;
+    	height: 0;
+    	border-top: 1400px solid white;
+    	border-right: 20vw solid transparent;
+      border-left: 12vh solid white;
+      z-index: -1;
     }
   }
   .social {
@@ -822,8 +851,8 @@ body{
       left: 0;
       width: 0;
     	height: 0;
-    	border-top: 350px solid white;
-    	border-right: 1200px solid transparent;
+    	border-top: 320px solid white;
+    	border-right: 1100px solid transparent;
       z-index: -1;
     }
   }
@@ -832,7 +861,6 @@ footer{
   right: 0;
   bottom: 0;
   left: 0;
-  // height: 10vw;
     #text {
       span {
         line-height: 18vh;
@@ -842,24 +870,38 @@ footer{
         top: -15vh;
       }
     }
-      #social-about{
-        padding: 1vw 0;
-        margin: 1vw 0;
-        ul{
-          text-align: left;
-          padding-left: 3vw;
-          li{
-            a{
-              width: 4vw;
-              height: 4vw;
-              i {
-                font-size: 2vw;
-                top: 1vw;
-              }
-            }
+  }
+  #social {
+    ul {
+      li {
+        a {
+          width: 4rem;
+          height: 4rem;
+          i {
+            font-size: 3rem;
+            top: 0.5rem;
           }
         }
       }
+    }
+  }
+  #social-about{
+    padding: 0.5vw 0;
+    margin: 1vw 0;
+    ul{
+      text-align: left;
+      padding-left: 3vw;
+      li{
+        a{
+          width: 4vw;
+          height: 4vw;
+          i {
+            font-size: 2vw;
+            top: 1vw;
+          }
+        }
+      }
+    }
   }
 }
 
@@ -868,11 +910,11 @@ footer{
   .sections:nth-child(1){
     background-image: url('../img/large_mountains.jpg');
   }
-  body{
+
     #landing{
       #intro{
-        padding: 5% 0;
-        margin: 10% auto;
+        padding: 8vw 0;
+        margin: 25vh auto 0 auto;
         #thunder{
           padding-left: 10%;
           align-self: start;
@@ -880,10 +922,6 @@ footer{
         }
       }
     }
-  }
-  form {
-    margin-bottom: 150px;
-  }
   #nav-bar {
     height: 10vw;
     #logo{
@@ -948,6 +986,33 @@ footer{
       }
     }
   }
+  #contact{
+    overflow: hidden;
+    .instructions{
+      margin: 20vw 0 0 2vw;
+      h3{
+        font-size: 2rem;
+      }
+    }
+    .border{
+      margin: 10vw 0 15vw 0;
+      padding: 2vw 8vw;
+      h1{
+        color: #fff;
+      }
+      form{
+        label{
+          color: #fff;
+        }
+      }
+    }
+    #triangle{
+    	border-top: 1400px solid white;
+    	border-right: 20vw solid transparent;
+      border-left: 20vh solid white;
+      z-index: -1;
+    }
+  }
   footer{
     #text {
       span {
@@ -956,11 +1021,36 @@ footer{
       }
     }
   }
+  #social-about{
+    padding: 0;
+      ul{
+        li{
+          a{
+            width: 3vw;
+            height: 3vw;
+            i {
+              font-size: 2vw;
+              top: 0.5vw;
+            }
+          }
+        }
+      }
+
+  }
 }
 //Screen breaks at 1440px
 @media screen and (min-width:90rem){
+    #landing{
+      #intro{
+        padding: 6vw 0;
+        margin: 20vh auto 10vh auto;
+        #thunder{
+          // padding-left: 10%;
+        }
+      }
+    }
   #container-about{
-    background: url('../img/large_profile_picture.jpg') no-repeat;
+    background: url('../img/highmedium_profile_picture.jpg') no-repeat;
   }
   .social {
     #triangle{
@@ -987,15 +1077,14 @@ footer{
     margin: 0 auto;
   }
   #container-about{
-    background: url('../img/xlarge_profile_picture.jpg') no-repeat;
+    background: url('../img/large_profile_picture.jpg') no-repeat;
   }
-  body{
     #landing{
       #intro{
+        padding: 10vw 0;
         grid-column-gap: 40px;
-        padding: 10% 0;
         #thunder{
-          align-self: end;
+          padding-left: 0;
         }
         h6{
           font-size: 6vw;
@@ -1006,16 +1095,18 @@ footer{
         }
       }
     }
-  }
   #nav-bar {
+    height: 8vw;
     #logo{
-      width: 18vw;
+      padding: 2%;
+      width: 15vw;
     }
     #hamb-menu-web.hamb-menu3.web {
       #nav{
         ul#menu.menu {
           li{
             a {
+              line-height: 20px;
               font-size: 25px;
             }
           }
@@ -1026,18 +1117,27 @@ footer{
   #fluent{
     padding: 3%;
   }
+  #contact{
+    #triangle{
+      border-left: 30vh solid white;
+    }
+    .border{
+      padding: 2vw 15vw;
+      margin: 9vw 0 13vw 0;
+    }
+  }
 }
 //Screen breaks at 1920px
 @media screen and (min-width:120rem){
-  body{
-    #landing{
-      #intro{
-        #thunder{
-          align-self: end;
-          padding-left: 20%;
-        }
-      }
+#landing{
+  #intro{
+    #thunder{
+      align-self: end;
     }
+  }
+}
+  #container-about{
+    background: url('../img/xlarge_profile_picture.jpg') no-repeat;
   }
   .social {
     #triangle{

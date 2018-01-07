@@ -1,6 +1,4 @@
 <?php
-	// $filter = $_GET['filter'];
-	// echo $filter;
 
 	include('connect.php');
 	error_reporting(0);

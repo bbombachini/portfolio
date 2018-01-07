@@ -125,81 +125,79 @@
     let promise = get('admin/controller.php?projects');
 
     promise.then(function(projects){
-      var jsondoc = projects;
-      var projects = document.querySelector('#projects');
+        var jsondoc = projects;
+        var projects = document.querySelector('#projects');
 
-      jsondoc.forEach(({project_id, project_name, project_thumb}) =>{
-        let newDiv = document.createElement("div");
-        let newImg = document.createElement("img");
-        newImg.src = 'img/'+screenSize+project_thumb;
-        newImg.dataset.id = project_id;
-        let newResult = document.createElement('h3');
-        newResult.classList.add('title');
-        newResult.innerHTML = project_name;
-        newDiv.classList.add('proj-div');
-        newDiv.append(newImg, newResult);
-        projects.appendChild(newDiv);
-      });
-      projects.querySelectorAll("div").forEach((dataset) => {
-        dataset.addEventListener('click', loadProj, false);
-      });
-
-      function loadProj(index){
-        console.log(index.target.dataset.id);
-        let openNew = get('admin/controller.php?proj='+index.target.dataset.id);
-
-        openNew.then(function(project){
-          if(project !== null){
-            var body = document.body;
-            let box = document.querySelector('.lightbox');
-            let boxCover = box.querySelector('.cover-img');
-            let boxImg = box.querySelector('.box-img');
-            let boxClose = document.querySelector('.close-box');
-            let boxHeader = box.querySelector('.header');
-            let text = box.querySelector('.proj-text');
-            while(text.firstChild) {
-               text.removeChild(text.firstChild);
-             }
-            body.classList.add('noscroll');
-            box.style.display = "block";
-            boxCover.src = "img/"+ project.project_cover;
-            boxImg.src = "img/"+screenSize+ project.project_img;
-            boxHeader.style.backgroundColor = project.project_colour;
-            let boxTitle = document.createElement('h1');
-            boxTitle.innerHTML = project.project_name;
-            text.appendChild(boxTitle);
-              if(project.project_client !== null){
-                var client = document.createElement('p');
-                client.innerHTML = project.project_client;
-                text.appendChild(client);
-              }
-            let boxDesc = document.createElement('p');
-            boxDesc.innerHTML = project.project_description;
-            text.appendChild(boxDesc);
-              if(project.project_url !== null){
-
-                let url = document.createElement('a');
-                let text = box.querySelector('.proj-text');
-                url.href = project.project_url;
-                url.innerHTML = project.project_url;
-                text.appendChild(url);
-              }
-            boxClose.addEventListener('click', closeBox, false);
-
-            function closeBox() {
-              box.style.display = 'none';
-              body.classList.remove('noscroll');
-              // document.body.style.overflow = "scroll";
-            }
-          }
-        }).catch(function(error){
-          console.log(error);
+        jsondoc.forEach(({project_id, project_name, project_thumb}) =>{
+          let newDiv = document.createElement("div");
+          let newImg = document.createElement("img");
+          newImg.src = 'img/'+screenSize+project_thumb;
+          newImg.dataset.id = project_id;
+          let newResult = document.createElement('h3');
+          newResult.classList.add('title');
+          newResult.innerHTML = project_name;
+          newDiv.classList.add('proj-div');
+          newDiv.append(newImg, newResult);
+          projects.appendChild(newDiv);
         });
-      }
-
+        projects.querySelectorAll("div").forEach((dataset) => {
+          dataset.addEventListener('click', loadProj, false);
+        });
     }).catch(function(error){
       console.log(error);
     });
+
+    function loadProj(index){
+      console.log(index.target.dataset.id);
+      let openNew = get('admin/controller.php?proj='+index.target.dataset.id);
+
+      openNew.then(function(project){
+        if(project !== null){
+          var body = document.body;
+          let box = document.querySelector('.lightbox');
+          let boxCover = box.querySelector('.cover-img');
+          let boxImg = box.querySelector('.box-img');
+          let boxClose = document.querySelector('.close-box');
+          let boxHeader = box.querySelector('.header');
+          let text = box.querySelector('.proj-text');
+          while(text.firstChild) {
+             text.removeChild(text.firstChild);
+           }
+          body.classList.add('noscroll');
+          box.style.display = "block";
+          boxCover.src = "img/"+ project.project_cover;
+          boxImg.src = "img/"+screenSize+ project.project_img;
+          boxHeader.style.backgroundColor = project.project_colour;
+          let boxTitle = document.createElement('h1');
+          boxTitle.innerHTML = project.project_name;
+          text.appendChild(boxTitle);
+            if(project.project_client !== null){
+              var client = document.createElement('p');
+              client.innerHTML = project.project_client;
+              text.appendChild(client);
+            }
+          let boxDesc = document.createElement('p');
+          boxDesc.innerHTML = project.project_description;
+          text.appendChild(boxDesc);
+            if(project.project_url !== null){
+
+              let url = document.createElement('a');
+              let text = box.querySelector('.proj-text');
+              url.href = project.project_url;
+              url.innerHTML = project.project_url;
+              text.appendChild(url);
+            }
+          boxClose.addEventListener('click', closeBox, false);
+
+          function closeBox() {
+            box.style.display = 'none';
+            body.classList.remove('noscroll');
+          }
+        }
+      }).catch(function(error){
+        console.log(error);
+      });
+    }
     // request = createRequest();
     // if(request===null) {
 		// 	alert("Please update your browser to a more modern one!");

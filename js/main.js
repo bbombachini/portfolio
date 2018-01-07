@@ -11,11 +11,26 @@
 
   function init() {
     // var photo = document.querySelector('#photo');
+    // if (document.querySelector('.download') == true){
+    //   var download = document.querySelector('.download');
+    //   download.addEventListener('click', openPDF, false);
+    // }
     getScreenSize();
     openProjects();
     openHex();
     howIWork();
     }
+  function about(){
+    if(document.querySelector('.download') !== null){
+      var download = document.querySelector('.download');
+      download.addEventListener('click', openPDF, false);
+    }
+  }
+
+  function openPDF(){
+    var pdf = "Bombachini_Barbara_resume.pdf";
+    window.open(pdf, '_blank', 'fullscreen=yes');
+  }
 
   function menuOpen() {
     if(menu.classList.contains('open')){
@@ -27,6 +42,8 @@
   }
 
   function howIWork(){
+    if(document.querySelector('#result') !== null){
+
     // var newReq = createRequest();
     // if(newReq===null) {
 		// 	alert("Please update your browser to a more modern one!");
@@ -48,6 +65,12 @@
       });
       function readMe(evt){
           // console.log(evt);
+          var parag = document.querySelectorAll('.steps p');
+          console.log(parag);
+          parag.forEach((p)=>{
+            p.style.borderBottom = "7px solid white";
+          });
+          evt.target.style.borderBottom = "7px solid #3b3a3a";
           while(result.firstChild){
            result.removeChild(result.firstChild);
           }
@@ -65,7 +88,7 @@
           txt.innerHTML = newjson[i].steps_desc;
           newDiv.append(title, txt);
           result.appendChild(newDiv);
-          result.scrollIntoView({behavior: "smooth", block: "center", inline: "nearest"});
+          result.scrollIntoView({block: 'end', inline: 'nearest', behavior: 'smooth'});
         }
     }).catch(function(error){
       console.log(error);
@@ -106,7 +129,7 @@
      //        }
      //    }
       }
-
+    }
 
   function getScreenSize() {
     if(window.innerWidth < MEDIUM) {
@@ -122,6 +145,7 @@
   }
 
   function openProjects() {
+    if(document.querySelector('#projects') !== null){
     let promise = get('admin/controller.php?projects');
 
     promise.then(function(projects){
@@ -136,6 +160,7 @@
           let newResult = document.createElement('h3');
           newResult.classList.add('title');
           newResult.innerHTML = project_name;
+          newResult.dataset.id = project_id;
           newDiv.classList.add('proj-div');
           newDiv.append(newImg, newResult);
           projects.appendChild(newDiv);
@@ -147,57 +172,6 @@
       console.log(error);
     });
 
-    function loadProj(index){
-      console.log(index.target.dataset.id);
-      let openNew = get('admin/controller.php?proj='+index.target.dataset.id);
-
-      openNew.then(function(project){
-        if(project !== null){
-          var body = document.body;
-          let box = document.querySelector('.lightbox');
-          let boxCover = box.querySelector('.cover-img');
-          let boxImg = box.querySelector('.box-img');
-          let boxClose = document.querySelector('.close-box');
-          let boxHeader = box.querySelector('.header');
-          let text = box.querySelector('.proj-text');
-          while(text.firstChild) {
-             text.removeChild(text.firstChild);
-           }
-          body.classList.add('noscroll');
-          box.style.display = "block";
-          boxCover.src = "img/"+ project.project_cover;
-          boxImg.src = "img/"+screenSize+ project.project_img;
-          boxHeader.style.backgroundColor = project.project_colour;
-          let boxTitle = document.createElement('h1');
-          boxTitle.innerHTML = project.project_name;
-          text.appendChild(boxTitle);
-            if(project.project_client !== null){
-              var client = document.createElement('p');
-              client.innerHTML = project.project_client;
-              text.appendChild(client);
-            }
-          let boxDesc = document.createElement('p');
-          boxDesc.innerHTML = project.project_description;
-          text.appendChild(boxDesc);
-            if(project.project_url !== null){
-
-              let url = document.createElement('a');
-              let text = box.querySelector('.proj-text');
-              url.href = project.project_url;
-              url.innerHTML = project.project_url;
-              text.appendChild(url);
-            }
-          boxClose.addEventListener('click', closeBox, false);
-
-          function closeBox() {
-            box.style.display = 'none';
-            body.classList.remove('noscroll');
-          }
-        }
-      }).catch(function(error){
-        console.log(error);
-      });
-    }
     // request = createRequest();
     // if(request===null) {
 		// 	alert("Please update your browser to a more modern one!");
@@ -207,8 +181,60 @@
 		// request.onreadystatechange = statusResponse;
 		// request.open("GET", url, true);
 		// request.send();
-
+    }
 	}
+
+      function loadProj(index){
+        console.log(index.target.dataset.id);
+        let openNew = get('admin/controller.php?proj='+index.target.dataset.id);
+
+        openNew.then(function(project){
+          if(project !== null){
+            var body = document.body;
+            let box = document.querySelector('.lightbox');
+            let boxCover = box.querySelector('.cover-img');
+            let boxImg = box.querySelector('.box-img');
+            let boxClose = document.querySelector('.close-box');
+            let boxHeader = box.querySelector('.header');
+            let text = box.querySelector('.proj-text');
+            while(text.firstChild) {
+               text.removeChild(text.firstChild);
+             }
+            body.classList.add('noscroll');
+            box.style.display = "block";
+            boxCover.src = "img/"+ project.project_cover;
+            boxImg.src = "img/"+screenSize+ project.project_img;
+            boxHeader.style.backgroundColor = project.project_colour;
+            let boxTitle = document.createElement('h1');
+            boxTitle.innerHTML = project.project_name;
+            text.appendChild(boxTitle);
+              if(project.project_client !== null){
+                var client = document.createElement('p');
+                client.innerHTML = project.project_client;
+                text.appendChild(client);
+              }
+            let boxDesc = document.createElement('p');
+            boxDesc.innerHTML = project.project_description;
+            text.appendChild(boxDesc);
+              if(project.project_url !== null){
+
+                let url = document.createElement('a');
+                let text = box.querySelector('.proj-text');
+                url.href = project.project_url;
+                url.innerHTML = project.project_url;
+                text.appendChild(url);
+              }
+            boxClose.addEventListener('click', closeBox, false);
+
+            function closeBox() {
+              box.style.display = 'none';
+              body.classList.remove('noscroll');
+            }
+          }
+        }).catch(function(error){
+          console.log(error);
+        });
+      }
 	// function statusResponse() {
 	// 	if(request.readyState ===4 || request.status === 'complete') {
   //         // console.log(request.responseText);
@@ -236,6 +262,7 @@
   // }
 
   function openHex(){
+    if(document.querySelector('.honeycomb') !== null){
     hexagon = createRequest();
     if(hexagon===null) {
 			alert("Please update your browser to a more modern one!");
@@ -245,6 +272,7 @@
 		hexagon.onreadystatechange = hexResponse;
 		hexagon.open("GET", url, true);
 		hexagon.send();
+    }
   }
   function hexResponse(){
     if(hexagon.readyState ===4 || hexagon.status === 'complete') {
@@ -299,6 +327,7 @@
   // photo.addEventListener('click', styleChange,false);
   window.addEventListener('resize', getScreenSize, false);
   menu.addEventListener('click', menuOpen, false);
+  about.call(document.querySelector('.download'));
   // howIWork.call(document.querySelector('#work'));
 
 })();

@@ -10,11 +10,6 @@
 
 
   function init() {
-    // var photo = document.querySelector('#photo');
-    // if (document.querySelector('.download') == true){
-    //   var download = document.querySelector('.download');
-    //   download.addEventListener('click', openPDF, false);
-    // }
     getScreenSize();
     openProjects();
     openHex();
@@ -44,15 +39,6 @@
   function howIWork(){
     if(document.querySelector('#result') !== null){
 
-    // var newReq = createRequest();
-    // if(newReq===null) {
-		// 	alert("Please update your browser to a more modern one!");
-		// 	return;
-		// }
-		// let url = 'admin/controller.php?steps';
-		// newReq.onreadystatechange = newResp;
-		// newReq.open("GET", url, true);
-		// newReq.send();
 		let promise = get('admin/controller.php?steps');
 
     promise.then(function(steps){
@@ -63,6 +49,7 @@
       steps.forEach((p , index) => {
         p.addEventListener('click', readMe, false);
       });
+
       function readMe(evt){
           // console.log(evt);
           var parag = document.querySelectorAll('.steps p');
@@ -148,41 +135,41 @@
     if(document.querySelector('#projects') !== null){
     let promise = get('admin/controller.php?projects');
 
-    promise.then(function(projects){
-        var jsondoc = projects;
-        var projects = document.querySelector('#projects');
+    promise.then((projects)=>{
+      createThumbs(projects);
 
-        jsondoc.forEach(({project_id, project_name, project_thumb}) =>{
-          let newDiv = document.createElement("div");
-          let newImg = document.createElement("img");
-          newImg.src = 'img/'+screenSize+project_thumb;
-          newImg.dataset.id = project_id;
-          let newResult = document.createElement('h3');
-          newResult.classList.add('title');
-          newResult.innerHTML = project_name;
-          newResult.dataset.id = project_id;
-          newDiv.classList.add('proj-div');
-          newDiv.append(newImg, newResult);
-          projects.appendChild(newDiv);
-        });
-        projects.querySelectorAll("div").forEach((dataset) => {
-          dataset.addEventListener('click', loadProj, false);
-        });
     }).catch(function(error){
       console.log(error);
     });
 
-    // request = createRequest();
-    // if(request===null) {
-		// 	alert("Please update your browser to a more modern one!");
-		// 	return;
-		// }
-		// var url = 'admin/controller.php?projects';
-		// request.onreadystatechange = statusResponse;
-		// request.open("GET", url, true);
-		// request.send();
+		setFilter();
     }
 	}
+
+  function createThumbs(resp){
+    var jsondoc = resp;
+    var projects = document.querySelector('#projects');
+    while(projects.firstChild){
+     projects.removeChild(projects.firstChild);
+    }
+
+    jsondoc.forEach(({project_id, project_name, project_thumb}) =>{
+      let newDiv = document.createElement("div");
+      let newImg = document.createElement("img");
+      newImg.src = 'img/'+screenSize+project_thumb;
+      newImg.dataset.id = project_id;
+      let newResult = document.createElement('h3');
+      newResult.classList.add('title');
+      newResult.innerHTML = project_name;
+      newResult.dataset.id = project_id;
+      newDiv.classList.add('proj-div');
+      newDiv.append(newImg, newResult);
+      projects.appendChild(newDiv);
+    });
+    projects.querySelectorAll("div").forEach((dataset) => {
+      dataset.addEventListener('click', loadProj, false);
+    });
+  }
 
       function loadProj(index){
         console.log(index.target.dataset.id);
@@ -235,11 +222,22 @@
           console.log(error);
         });
       }
-    function filter(value){
-      let ajaxFilter = get('admin/controller.php?filter='+value);
 
-      ajaxFilter.then(function(resp){
-        console.log(resp)
+    function setFilter(){
+      var cat = document.querySelectorAll('.categories');
+      cat.forEach((a, dataset)=> {
+        a.addEventListener('click', filter, false);
+      });
+    }
+    function filter(evt, dataset){
+      evt.preventDefault();
+      // console.log(evt.currentTarget.dataset.id);
+      let target = evt.currentTarget.dataset.id;
+      let ajaxFilter = get('admin/controller.php?filter='+target);
+
+      ajaxFilter.then((resp) =>{
+        // console.log(resp);
+        createThumbs(resp);
       }).catch(function(error){
         console.log(error);
       });
@@ -299,6 +297,7 @@
       			// newDiv.append(newResult, newImg);
       			honey.appendChild(newDiv);
           });
+          //
           // projects.querySelectorAll("div").forEach((dataset) => {
           //   dataset.addEventListener('click', loadProj, false);
           // });
@@ -307,12 +306,6 @@
           // }
 		}
   }
-
-
-
-  // function styleChange() {
-  //
-  // }
 
 
   // function shrink(){
@@ -332,8 +325,6 @@
   window.addEventListener('load', init,false);
   // window.addEventListener('resize', init,false);
   // window.addEventListener('load', slideInit,false);
-  // photo.addEventListener('click', shrink,false);
-  // photo.addEventListener('click', styleChange,false);
   window.addEventListener('resize', getScreenSize, false);
   menu.addEventListener('click', menuOpen, false);
   about.call(document.querySelector('.download'));

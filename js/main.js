@@ -235,6 +235,15 @@
           console.log(error);
         });
       }
+    function filter(value){
+      let ajaxFilter = get('admin/controller.php?filter='+value);
+
+      ajaxFilter.then(function(resp){
+        console.log(resp)
+      }).catch(function(error){
+        console.log(error);
+      });
+    }
 	// function statusResponse() {
 	// 	if(request.readyState ===4 || request.status === 'complete') {
   //         // console.log(request.responseText);

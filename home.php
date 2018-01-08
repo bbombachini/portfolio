@@ -1,3 +1,6 @@
+<?php
+
+?>
 <!doctype html>
 <html class="no-js" lang="en">
   <head>
@@ -17,32 +20,21 @@
     <link rel="stylesheet" href="css/app.css">
   </head>
   <body class="index">
-    <noscript>
-      <style>html{display:none;}</style>
-      <meta http-equiv="refresh" content="0.0;url=home.php">
-    </noscript>
 
     <div id="container">
       <header>
         <div class="row">
           <div id="nav-bar" class="small-12 columns">
               <img src="img/bombachini_logo.svg" id="logo" alt="Barbara Bombachini Logo">
-            <div id="hamburg" data-responsive-toggle="hamb-menu3" data-hide-for="medium">
-              <button id="button" type="button" data-toggle="hamb-menu3">
-                <span class="icon"></span>
-                <span class="icon"></span>
-                <span class="icon"></span>
-                <span class="icon"></span>
-              </button>
-            </div>
+
 
           <div id="hamb-menu-web" class="hamb-menu3 web">
             <nav id="nav">
-              <ul id="menu" class="medium-horizontal menu" data-toggle-menu>
+              <ul id="menu" class="medium-horizontal menu">
                 <li><a class="linen" id="photo" href="#">PHOTOGRAPHY</a></li>
                 <li><a class="linen" href="#">WEB DEV</a></li>
-                <li><a class="linen" href="about.html">ABOUT</a></li>
-                <li><a class="linen" href="contact.html">CONTACT</a></li>
+                <li><a class="linen" href="about.php">ABOUT</a></li>
+                <li><a class="linen" href="contact.php">CONTACT</a></li>
               </ul>
             </nav>
           </div>
@@ -89,28 +81,9 @@
                   </div>
           </section>
 
-          <section id="fluent" class="show-for-large">
-                <h1>Fluent In</h1>
-                <div class="row">
-                  <div class="large-8 large-centered xlarge-6 xxlarge-4 end columns">
-                    <div class="honeycomb">
-
-                    </div>
-                  </div>
-                </div>
-          </section>
-
 
           <section id="portfolio">
                 <h1>Portfolio</h1>
-                <div>
-                  <ul class="filter">
-                    <li><a class="linen" href="">All</a></li>
-                    <li><a class="linen" href="">Web Development</a></li>
-                    <li><a class="linen" href="">Branding</a></li>
-                    <li><a class="linen" href="">Web Design</a></li>
-                  </ul>
-                </div>
                 <div id="projects">
                 </div>
 
@@ -186,14 +159,7 @@
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.2/TweenMax.min.js"></script>
-    <script src="bower_components/jquery/dist/jquery.js"></script>
-    <script src="bower_components/what-input/dist/what-input.js"></script>
-    <script src="bower_components/foundation-sites/dist/js/foundation.js"></script>
-    <script src="js/app.js"></script>
-    <script type="text/javascript" src="js/request.js"></script>
-    <script type="text/javascript" src="js/slide.js"></script>
-    <script type="text/javascript" src="js/main.js"></script>
-    <script type="text/javascript" src="js/menu.js"></script>
+
 
   </body>
 </html>

@@ -51,6 +51,19 @@ if(isset($_GET['language'])) {
 			echo json_encode($rows);
 		}
 
+		if(isset($_GET['filter'])) {
+			$filter = $_GET['filter'];
+			$query = "SELECT pro.project_id, cat.category_id FROM tbl_projects pro, tbl_categories cat, tbl_proj_cat pc WHERE pro.project_id = pc.project_id AND cat.category_id = pc.category_id AND cat.category_id="$filter;
+			$result = mysqli_query($link, $query);
+
+			$rows = array();
+
+			while($row = mysqli_fetch_assoc($result)) {
+				$rows[] = $row;
+			}
+			echo json_encode($rows);
+		}
+
 // 	if(isset($_GET['project'])) { //see if there's a parameter called carModel
 // 	$proj = $_GET['project'];
 //

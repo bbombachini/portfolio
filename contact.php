@@ -1,3 +1,5 @@
+<?php ?>
+
 <!doctype html>
 <html class="no-js" lang="en">
   <head>
@@ -17,28 +19,16 @@
     <link rel="stylesheet" href="css/app.css">
   </head>
   <body class="contact">
-    <noscript>
-      <style>html{display:none;}</style>
-      <meta http-equiv="refresh" content="0.0;url=contact.php">
-    </noscript>
 
     <div id="container">
       <header>
         <div class="row">
           <div id="nav-bar" class="small-12 columns">
               <img src="img/bombachini_logo.svg" id="logo" alt="Barbara Bombachini Logo">
-            <div id="hamburg" data-responsive-toggle="hamb-menu3" data-hide-for="medium">
-              <button id="button" type="button" data-toggle="hamb-menu3">
-                <span class="icon"></span>
-                <span class="icon"></span>
-                <span class="icon"></span>
-                <span class="icon"></span>
-              </button>
-            </div>
 
           <div id="hamb-menu-web" class="hamb-menu3 web">
             <nav id="nav">
-              <ul id="menu" class="medium-horizontal menu" data-toggle-menu>
+              <ul id="menu" class="medium-horizontal menu">
                 <li><a class="linen" id="photo" href="#">PHOTOGRAPHY</a></li>
                 <li><a class="linen" href="index.html">WEB DEV</a></li>
                 <li><a class="linen" href="about.html">ABOUT</a></li>
@@ -64,7 +54,7 @@
         <div class="small-12 small-centered large-8 columns">
           <div class="border">
             <h1>Get in touch!</h1>
-            <form action="contact.php" method="post">
+            <form action="admin/contact.php" method="post">
               <label for="name">Name</label>
               <input name="name" type="text">
               <label name="email" for="email">Email</label>
@@ -122,38 +112,5 @@
 
     <!-- container ends here -->
     </div>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.2/TweenMax.min.js"></script>
-    <script src="bower_components/jquery/dist/jquery.js"></script>
-    <script src="bower_components/what-input/dist/what-input.js"></script>
-    <script src="bower_components/foundation-sites/dist/js/foundation.js"></script>
-    <script src="js/app.js"></script>
-    <script type="text/javascript" src="js/menu.js"></script>
-    <!-- <script>
-
-
-    function init() {
-    var photo = document.querySelector('#photo');
-}
-
-    function shrink(){
-        var bar = document.querySelector('#nav-bar');
-        var content = document.querySelector('#content');
-        var nav = document.querySelector('#nav');
-        var land = document.querySelector('#landing');
-        var xheight = window.innerHeight;
-        var tl = new TimelineLite();
-
-        tl.to(nav,1,{display:"none", ease:Expo});
-        tl.to(land,1,{display: "none"});
-        tl.to(bar,2,{width:"15%", ease:Circ});
-        tl.to(bar,2,{height:xheight, float: "left", ease:Circ});
-        tl.to(content,2,{display:"block"});
-      }
-
-    window.addEventListener('load', init,false);
-    photo.addEventListener('click', shrink,false);
-
-    </script> -->
   </body>
 </html>

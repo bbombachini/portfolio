@@ -315,7 +315,7 @@ body{
     grid-gap: 5vw 5vw;
     padding: 10vw;
     .steps{
-      padding: 0 5% 10% 20%;
+      padding: 0 5% 20% 20%;
       display: grid;
       border: 7px solid $yell;
       text-align: right;
@@ -323,12 +323,36 @@ body{
         font-size: 12vw;
         font-family: 'Medium', 'Helvetica', 'Arial', sans-serif !important;
         border-bottom: 7px solid #fff;
+        transition: $animate;
+        position: relative;
+          &:before,
+          &:after {
+            content: "";
+            position: absolute;
+            bottom: -7px;
+            width: 0px;
+            height: 7px;
+            transition: $animate;
+            transition-duration: 0.75s;
+            opacity: 0;
+          }
+          &.linen {
+            &:after {
+              left: 0;
+              background-color: $grey;
+            }
+          }
       }
       p:hover {
-        border-bottom: 7px solid $grey;
+        // border-bottom: 7px solid $grey;
+        &:before,
+        &:after {
+          width: 100%;
+          opacity: 1;
+          }
+        }
       }
     }
-  }
   #result {
     padding: 5vw 0;
   }
@@ -502,8 +526,50 @@ footer{
 #portfolio{
   position: relative;
   text-align: center;
-  padding: 8vw 0;
+  padding: 5vw 0;
   background-color: #fff;
+  ul.filter{
+    display:inline-flex;
+    flex-grow: 1;
+    justify-content: center;
+    width: 100%;
+    li{
+      text-decoration: none;
+      list-style: none;
+      padding: 2% 3%;
+      a {
+        font-family: 'Light','Helvetica', 'Arial', sans-serif;
+        transition: $animate;
+        position: relative;
+        line-height: 16px;
+        color: $yell;
+        &:before,
+        &:after {
+          content: "";
+          position: absolute;
+          bottom: -5px;
+          width: 0px;
+          height: 1px;
+          transition: $animate;
+          transition-duration: 0.75s;
+          opacity: 0;
+        }
+        &.linen {
+          &:after {
+            left: 0;
+            background-color: $yell;
+          }
+        }
+      }
+      a:hover {
+           &:before,
+           &:after {
+             width: 60%;
+             opacity: 1;
+           }
+         }
+    }
+  }
   h1 {
     padding: 5vw 0;
   }
@@ -540,7 +606,7 @@ footer{
       padding: 5% 10%;
     }
     .header{
-      padding: 5%;
+      padding: 3%;
     }
     .content{
       height: 100%;
@@ -605,7 +671,7 @@ footer{
           padding: 10px;
           font-size: 15px;
           font-family: 'Thin', sans-serif;
-          line-height: 100px;
+          line-height: 8px;
         }
         a:last-child {
           margin-right: 10px;
@@ -713,10 +779,41 @@ footer{
     }
     #hamb-menu-web{
       #menu {
-        a {
+        li{
           padding: 15px 20px;
+        a {
+          padding: 0;
           font-size: 18px;
+          transition: $animate;
+          position: relative;
+          line-height: 16px;
+          &:before,
+          &:after {
+            content: "";
+            position: absolute;
+            bottom: -8px;
+            width: 0px;
+            height: 1px;
+            // margin: 5px 0 0;
+            transition: $animate;
+            transition-duration: 0.75s;
+            opacity: 0;
+          }
+          &.linen {
+            &:after {
+              left: 2px;
+              background-color: $lightgrey;
+            }
+          }
         }
+        a:hover {
+             &:before,
+             &:after {
+               width: 60%;
+               opacity: 1;
+             }
+           }
+         }
       }
     }
   }
@@ -731,7 +828,34 @@ footer{
         #menu {
           a {
             color: #fff;
+            transition: $animate;
+            position: relative;
+            line-height: 16px;
+            &:before,
+            &:after {
+              content: "";
+              position: absolute;
+              bottom: -5px;
+              width: 0px;
+              height: 1px;
+              transition: $animate;
+              transition-duration: 0.75s;
+              opacity: 0;
+            }
+            &.linen {
+              &:after {
+                left: 2px;
+                background-color: #fff;
+              }
+            }
           }
+          a:hover {
+               &:before,
+               &:after {
+                 width: 60%;
+                 opacity: 1;
+             }
+            }
         }
       }
     }
@@ -956,7 +1080,6 @@ footer{
         position:relative;
         height: 100%;
         cursor: pointer;
-
         .title{
           position: absolute;
           opacity: 0;
@@ -1117,6 +1240,15 @@ footer{
   }
   #fluent{
     padding: 3%;
+  }
+  #portfolio{
+    #projects{
+      justify-items: center;
+      grid-gap: 50px;
+      .proj-div{
+        max-width: 550px;
+      }
+    }
   }
   #contact{
     #triangle{

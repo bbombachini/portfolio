@@ -62,7 +62,7 @@
       function readMe(evt){
           // console.log(evt);
           var parag = document.querySelectorAll('.steps p');
-          console.log(parag);
+          // console.log(parag);
           parag.forEach((p)=>{
             p.style.borderBottom = "7px solid white";
           });
@@ -98,7 +98,7 @@
     else {
       screenSize = 'large';
     }
-    console.log(screenSize);
+    // console.log(screenSize);
   }
 
   function openProjects() {
@@ -141,7 +141,7 @@
 
 
   function loadProj(index){
-    console.log(index.target.dataset.id);
+    // console.log(index.target.dataset.id);
     let openNew = 'admin/controller.php?proj='+index.target.dataset.id;
 
     fetch(openNew)

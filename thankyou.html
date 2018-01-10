@@ -1,5 +1,3 @@
-<?php ?>
-
 <!doctype html>
 <html class="no-js" lang="en">
   <head>
@@ -25,14 +23,22 @@
         <div class="row">
           <div id="nav-bar" class="small-12 columns">
               <img src="img/bombachini_logo.svg" id="logo" alt="Barbara Bombachini Logo">
+            <div id="hamburg" data-responsive-toggle="hamb-menu3" data-hide-for="medium">
+              <button id="button" type="button" data-toggle="hamb-menu3">
+                <span class="icon"></span>
+                <span class="icon"></span>
+                <span class="icon"></span>
+                <span class="icon"></span>
+              </button>
+            </div>
 
           <div id="hamb-menu-web" class="hamb-menu3 web">
             <nav id="nav">
-              <ul id="menu" class="medium-horizontal menu">
+              <ul id="menu" class="medium-horizontal menu" data-toggle-menu>
                 <li><a class="linen" id="photo" href="#">PHOTOGRAPHY</a></li>
                 <li><a class="linen" href="index.html">WEB DEV</a></li>
                 <li><a class="linen" href="about.html">ABOUT</a></li>
-                <li><a class="linen" href="#">CONTACT</a></li>
+                <li><a class="linen active" href="contact.html">CONTACT</a></li>
               </ul>
             </nav>
           </div>
@@ -53,20 +59,8 @@
         </div>
         <div class="small-12 small-centered large-8 columns">
           <div class="border">
-            <h1>Get in touch!</h1>
-            <form action="admin/contact.php" method="post">
-              <label for="name">Name</label>
-              <input name="name" type="text">
-              <label name="email" for="email">Email</label>
-              <input type="email">
-              <label class="address" for="address">Address</label>
-              <input class="address" name="address" type="text" size="21" maxlength="30" />
-              <label for="subject">Subject</label>
-              <input name="subject" type="text">
-              <label for="message">Message</label>
-              <textarea name="message" rows="4" cols="80"></textarea>
-              <button name="submit" type="submit">Send</button>
-            </form>
+
+            <h3>Thank you! Your email was sent!</h3>
           </div>
         </div>
       </div>
@@ -112,5 +106,38 @@
 
     <!-- container ends here -->
     </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.2/TweenMax.min.js"></script>
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/what-input/dist/what-input.js"></script>
+    <script src="bower_components/foundation-sites/dist/js/foundation.js"></script>
+    <script src="js/app.js"></script>
+    <script type="text/javascript" src="js/menu.js"></script>
+    <!-- <script>
+
+
+    function init() {
+    var photo = document.querySelector('#photo');
+}
+
+    function shrink(){
+        var bar = document.querySelector('#nav-bar');
+        var content = document.querySelector('#content');
+        var nav = document.querySelector('#nav');
+        var land = document.querySelector('#landing');
+        var xheight = window.innerHeight;
+        var tl = new TimelineLite();
+
+        tl.to(nav,1,{display:"none", ease:Expo});
+        tl.to(land,1,{display: "none"});
+        tl.to(bar,2,{width:"15%", ease:Circ});
+        tl.to(bar,2,{height:xheight, float: "left", ease:Circ});
+        tl.to(content,2,{display:"block"});
+      }
+
+    window.addEventListener('load', init,false);
+    photo.addEventListener('click', shrink,false);
+
+    </script> -->
   </body>
 </html>

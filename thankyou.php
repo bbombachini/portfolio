@@ -1,3 +1,7 @@
+<?php
+  $name = $_GET['name'];
+  // echo "Thank you ".$name;
+?>
 <!doctype html>
 <html class="no-js" lang="en">
   <head>
@@ -16,9 +20,9 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/app.css">
   </head>
-  <body>
+  <body class="contact">
 
-    <div id="container-about">
+    <div id="container">
       <header>
         <div class="row">
           <div id="nav-bar" class="small-12 columns">
@@ -37,8 +41,8 @@
               <ul id="menu" class="medium-horizontal menu" data-toggle-menu>
                 <li><a class="linen" id="photo" href="#">PHOTOGRAPHY</a></li>
                 <li><a class="linen" href="index.html">WEB DEV</a></li>
-                <li><a class="linen active" href="#">ABOUT</a></li>
-                <li><a class="linen" href="contact.html">CONTACT</a></li>
+                <li><a class="linen" href="about.html">ABOUT</a></li>
+                <li><a class="linen active" href="contact.html">CONTACT</a></li>
               </ul>
             </nav>
           </div>
@@ -48,60 +52,65 @@
 
       <!-- PAGE CONTENT STARTS HERE -->
 
-      <div class="row" id="mainbio">
-        <div class="small-10 small-centered large-7 large-offset-4 columns end">
-          <div class="hide-for-large small-5 small-centered medium-4 columns">
-            <img src="img/profile_barbara_bombachini.jpg" id="profile" class="float-center" alt="Barbara Bombachini Profile Picture">
+      <div id="contact" class="row fluid">
+        <div class="show-for-large" id="triangle">
+        </div>
+        <div class="small-12 large-3 columns">
+          <div class="instructions">
+
           </div>
-          <div class="bio">
-            <h1>Barbara Bombachini</h1>
-            <p>Professional freelance photographer from São Paulo, Brazil, currently living in London, Ontario.
-She fell in love for adventures when she backpacked by her own for one sabbatical year throughout South America. </p>
-<p>She returned aiming to use photography as a reflection of our society, as her outmost personal and artistic expression, developing dialogic stories, exploring new visibilities and expressing aesthetically what she sees in the world.</p>
-<p>After graduating in Photographic Processes on 2009 and working for 4 years as a Product Specialist and Professional Market rep for Canon Brazil, and with more than 7 years as a professional photographer, she’s taking a new step as an Interactive Media Designer and Web Developer.</p>
-  <p>Currently available for hire or freelance jobs.</p>
-          <button class="hide-for-small-only download float-center">
-            <a href="Bombachini_Barbara_resume.pdf" target="_blank">Download Resume</a></button>
+        </div>
+        <div class="small-12 small-centered large-8 columns">
+          <div class="border">
+
+            <h3>
+              <?php echo "Thank you ".$name."!"; ?>
+            </h3>
+            <h2> Your email was sent and I'll return to you within 24 hours!</h2>
+            <button type="button"><a href="index.html">Back to Home</a>
+            </button>
           </div>
         </div>
       </div>
 
-    <footer>
-      <div id="text">
-          <span>about</span>
-      </div>
-      <div class="about row">
-        <div id="social-about" class="small-12 small-centered columns">
-          <ul>
-            <li>
-              <a href="https://codepen.io/bbombachini/" target="_blank">
-                  <i class="fa fa-codepen" aria-hidden="true"></i>
-              </a>
-            </li>
-            <li>
-              <a href="https://www.facebook.com/barbara.bombachini" target="_blank">
-                  <i class="fa fa-facebook" aria-hidden="true"></i>
-              </a>
-            </li>
-            <li>
-              <a href="https://github.com/bbombachini" target="_blank">
-                  <i class="fa fa-github fa-inverse" aria-hidden="true"></i>
-              </a>
-            </li>
-            <li>
-              <a href="https://www.instagram.com/bbombachini/" target="_blank">
-                  <i class="fa fa-instagram" aria-hidden="true"></i>
-              </a>
-            </li>
-            <li>
-              <a href="https://www.linkedin.com/in/barbara-bombachini-b61b92aa/" target="_blank">
-                  <i class="fa fa-linkedin" aria-hidden="true"></i>
-              </a>
-            </li>
-          </ul>
+
+      <footer>
+        <div id="text">
+            <span>contact</span>
         </div>
-      </div>
-    </footer>
+        <div class="about row">
+          <div id="social-about" class="small-12 small-centered columns">
+            <ul>
+              <li>
+                <a href="https://codepen.io/bbombachini/" target="_blank">
+                    <i class="fa fa-codepen" aria-hidden="true"></i>
+                </a>
+              </li>
+              <li>
+                <a href="https://www.facebook.com/barbara.bombachini" target="_blank">
+                    <i class="fa fa-facebook" aria-hidden="true"></i>
+                </a>
+              </li>
+              <li>
+                <a href="https://github.com/bbombachini" target="_blank">
+                    <i class="fa fa-github fa-inverse" aria-hidden="true"></i>
+                </a>
+              </li>
+              <li>
+                <a href="https://www.instagram.com/bbombachini/" target="_blank">
+                    <i class="fa fa-instagram" aria-hidden="true"></i>
+                </a>
+              </li>
+              <li>
+                <a href="https://www.linkedin.com/in/barbara-bombachini-b61b92aa/" target="_blank">
+                    <i class="fa fa-linkedin" aria-hidden="true"></i>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </footer>
+
 
     <!-- container ends here -->
     </div>
@@ -112,7 +121,6 @@ She fell in love for adventures when she backpacked by her own for one sabbatica
     <script src="bower_components/foundation-sites/dist/js/foundation.js"></script>
     <script src="js/app.js"></script>
     <script type="text/javascript" src="js/menu.js"></script>
-    <script type="text/javascript" src="js/main.js"></script>
     <!-- <script>
 
 

@@ -8,7 +8,7 @@
     $subject = $_POST['subject'];
     $message = $_POST['message'];
     $address = $_POST['address'];
-    $direct = "thankyou.php";
+    $direct = "../thankyou.php";
 
     // echo $name;
     // echo $email;

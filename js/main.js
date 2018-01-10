@@ -7,7 +7,20 @@
   var request;
   var hexagon;
   var menu = document.querySelector("#button");
+  const mediumQuery = window.matchMedia("(min-width:640px)");
+  const largeQuery = window.matchMedia("(min-width:1024px)");
 
+  function checkScreenSize(largeQuery){
+    if (largeQuery.matches) {
+      openProjects();
+      openHex();
+      howIWork();
+    } else if(mediumQuery.matches) {
+      openProjects();
+      openHex();
+      howIWork();
+    }
+  }
 
   function init() {
     getScreenSize();
@@ -15,17 +28,6 @@
     openHex();
     howIWork();
     }
-  function about(){
-    if(document.querySelector('.download') !== null){
-      var download = document.querySelector('.download');
-      download.addEventListener('click', openPDF, false);
-    }
-  }
-
-  function openPDF(){
-    var pdf = "Bombachini_Barbara_resume.pdf";
-    window.open(pdf, '_blank', 'fullscreen=yes');
-  }
 
   function menuOpen() {
     if(menu.classList.contains('open')){
@@ -38,15 +40,22 @@
 
   function howIWork(){
     if(document.querySelector('#result') !== null){
+  		let newPromise ='admin/controller.php?steps';
+      fetch(newPromise)
+        .then((resp) => resp.json())
+          .then((steps) => { createSteps(steps); })
+            .catch(function(error){
+              console.log(error);
+            });
+      }
+  }
 
-		let promise = get('admin/controller.php?steps');
-
-    promise.then(function(steps){
+  function createSteps(steps){
       var newjson = steps;
       var result = document.querySelector('#result');
-      var steps = document.querySelectorAll('.steps');
+      var step = document.querySelectorAll('.steps');
 
-      steps.forEach((p , index) => {
+      step.forEach((p , index) => {
         p.addEventListener('click', readMe, false);
       });
 
@@ -77,46 +86,7 @@
           result.appendChild(newDiv);
           result.scrollIntoView({block: 'end', inline: 'nearest', behavior: 'smooth'});
         }
-    }).catch(function(error){
-      console.log(error);
-    });
-
-     // function newResp() {
-   		// if(newReq.readyState ===4 || newReq.status === 'complete') {
-     //         // console.log(newReq.responseText);
-     //         var newjson = JSON.parse(newReq.responseText);
-     //         var result = document.querySelector('#result');
-     //         var steps = document.querySelectorAll('.steps');
-     //
-     //         steps.forEach((p , index) => {
-     //           p.addEventListener('click', readMe, false);
-     //         });
-     //
-             // function readMe(evt){
-             //     // console.log(evt);
-             //     while(result.firstChild){
-             //      result.removeChild(result.firstChild);
-             //     }
-             //     let i = evt.target.id;
-             //     if(screenSize == 'medium' || screenSize == 'large'){
-             //       let icon = document.createElement('img');
-             //       icon.classList.add('icon');
-             //       icon.src = "img/"+ newjson[i].steps_img;
-             //       result.appendChild(icon);
-             //     }
-             //     let newDiv = document.createElement('div');
-             //     let title = document.createElement('h3');
-             //     title.innerHTML = newjson[i].steps_title;
-             //     let txt = document.createElement('p');
-             //     txt.innerHTML = newjson[i].steps_desc;
-             //     newDiv.append(title, txt);
-             //     result.appendChild(newDiv);
-             //     result.scrollIntoView({behavior: "smooth", block: "center", inline: "nearest"});
-             //   }
-     //        }
-     //    }
       }
-    }
 
   function getScreenSize() {
     if(window.innerWidth < MEDIUM) {
@@ -133,27 +103,26 @@
 
   function openProjects() {
     if(document.querySelector('#projects') !== null){
-    let promise = get('admin/controller.php?projects');
+    let promise = "admin/controller.php?projects";
 
-    promise.then((projects)=>{
-      createThumbs(projects);
-
-    }).catch(function(error){
-      console.log(error);
-    });
+    fetch(promise)
+      .then((resp) => resp.json())
+        .then((proj) => { createThumbs(proj); })
+          .catch(function(error){
+            console.log(error);
+          });
 
 		setFilter();
     }
 	}
 
-  function createThumbs(resp){
-    var jsondoc = resp;
+  function createThumbs(proj){
     var projects = document.querySelector('#projects');
     while(projects.firstChild){
      projects.removeChild(projects.firstChild);
     }
 
-    jsondoc.forEach(({project_id, project_name, project_thumb}) =>{
+    proj.forEach(({project_id, project_name, project_thumb}) =>{
       let newDiv = document.createElement("div");
       let newImg = document.createElement("img");
       newImg.src = 'img/'+screenSize+project_thumb;
@@ -166,27 +135,37 @@
       newDiv.append(newImg, newResult);
       projects.appendChild(newDiv);
     });
-    projects.querySelectorAll("div").forEach((dataset) => {
-      dataset.addEventListener('click', loadProj, false);
+    projects.querySelectorAll("div").forEach((data) => {
+      data.addEventListener('click', loadProj, false);
     });
-  }
 
-      function loadProj(index){
-        console.log(index.target.dataset.id);
-        let openNew = get('admin/controller.php?proj='+index.target.dataset.id);
 
-        openNew.then(function(project){
-          if(project !== null){
-            var body = document.body;
-            let box = document.querySelector('.lightbox');
-            let boxCover = box.querySelector('.cover-img');
-            let boxImg = box.querySelector('.box-img');
-            let boxClose = document.querySelector('.close-box');
-            let boxHeader = box.querySelector('.header');
-            let text = box.querySelector('.proj-text');
-            while(text.firstChild) {
-               text.removeChild(text.firstChild);
-             }
+  function loadProj(index){
+    console.log(index.target.dataset.id);
+    let openNew = 'admin/controller.php?proj='+index.target.dataset.id;
+
+    fetch(openNew)
+      .then((resp) => resp.json())//convert result to json
+        .then((info) => {
+          // console.log(info);
+          openLightBox(info); })
+          .catch(function(error){
+            console.log(error);
+          });
+
+
+  function openLightBox(project){
+      if(project !== null){
+          var body = document.body;
+          let box = document.querySelector('.lightbox');
+          let boxCover = box.querySelector('.cover-img');
+          let boxImg = box.querySelector('.box-img');
+          let boxClose = document.querySelector('.close-box');
+          let boxHeader = box.querySelector('.header');
+          let text = box.querySelector('.proj-text');
+          while(text.firstChild) {
+             text.removeChild(text.firstChild);
+           }
             body.classList.add('noscroll');
             box.style.display = "block";
             boxCover.src = "img/"+ project.project_cover;
@@ -217,11 +196,10 @@
               box.style.display = 'none';
               body.classList.remove('noscroll');
             }
-          }
-        }).catch(function(error){
-          console.log(error);
-        });
+        }
       }
+    }
+  }
 
     function setFilter(){
       var cat = document.querySelectorAll('.categories');
@@ -233,78 +211,72 @@
       evt.preventDefault();
       // console.log(evt.currentTarget.dataset.id);
       let target = evt.currentTarget.dataset.id;
-      let ajaxFilter = get('admin/controller.php?filter='+target);
+      let ajaxFilter ='admin/controller.php?filter='+target;
 
-      ajaxFilter.then((resp) =>{
-        // console.log(resp);
-        createThumbs(resp);
-      }).catch(function(error){
-        console.log(error);
-      });
+      fetch(ajaxFilter)
+        .then((resp) => resp.json())
+          .then((proj) =>{ createThumbs(proj);})
+            .catch(function(error){
+              console.log(error);
+            });
     }
-	// function statusResponse() {
-	// 	if(request.readyState ===4 || request.status === 'complete') {
-  //         // console.log(request.responseText);
-  //         var jsondoc = JSON.parse(request.responseText);
-  //         var projects = document.querySelector('#projects');
-  //
-  //         jsondoc.forEach(({project_id, project_name, project_thumb}) =>{
-  //           let newDiv = document.createElement("div");
-  //           let newImg = document.createElement("img");
-  //           newImg.src = 'img/'+screenSize+project_thumb;
-  //           newImg.dataset.id = project_id;
-  //     			let newResult = document.createElement("p");
-  //     			newResult.innerHTML = project_name;
-  //     			newDiv.append(newResult, newImg);
-  //     			projects.appendChild(newDiv);
-  //         });
-  //         projects.querySelectorAll("div").forEach((dataset) => {
-  //           dataset.addEventListener('click', loadProj, false);
-  //         });
-  //         function loadProj(index){
-  //           console.log(index.target.dataset);
-  //           console.log
-  //         }
-	// 	}
-  // }
 
   function openHex(){
-    if(document.querySelector('.honeycomb') !== null){
-    hexagon = createRequest();
-    if(hexagon===null) {
-			alert("Please update your browser to a more modern one!");
-			return;
-		}
-		var url = 'admin/controller.php?language';
-		hexagon.onreadystatechange = hexResponse;
-		hexagon.open("GET", url, true);
-		hexagon.send();
-    }
-  }
-  function hexResponse(){
-    if(hexagon.readyState ===4 || hexagon.status === 'complete') {
-          // console.log(hexagon.responseText);
-          var jsonlang = JSON.parse(hexagon.responseText);
-          var honey = document.querySelector('.honeycomb');
+    let url = 'admin/controller.php?language';
 
-          jsonlang.forEach(({lang_id, lang_name, lang_thumb}) => {
-            let newDiv = document.createElement("div");
-            newDiv.classList.add('hex');
-            newDiv.style.backgroundImage = "url('img/"+lang_thumb+"')";
-            newDiv.dataset.id = lang_id;
-      			// let newResult = document.createElement("p");
-      			// newResult.innerHTML = project_name;
-      			// newDiv.append(newResult, newImg);
-      			honey.appendChild(newDiv);
+    fetch(url)
+    .then((resp) => resp.json())
+      .then((data) => { hexResponse(data); })
+        .catch(function(error){
+          console.log(error);
+        });
+  }
+
+  function hexResponse(data){
+          var honey = document.querySelector('.honeycomb');
+          var desc = document.querySelector('.lang-desc');
+          while(honey.firstChild){
+           honey.removeChild(honey.firstChild);
+          }
+
+          data.forEach(({lang_id, lang_name, lang_thumb, lang_desc}) => {
+            let newDiv = `<div class="hex" data-id="${lang_id}" style="background-image:url(img/${lang_thumb})">
+                    </div>`;
+            let div = `<div class="hoverDiv" data-id="${lang_id}">
+                        <h3>${lang_name}</h3>
+                        <p>${lang_desc}</p>
+                    </div>`;
+            // let newDiv = document.createElement("div");
+            // newDiv.classList.add('hex');
+            // newDiv.style.backgroundImage = "url('img/"+lang_thumb+"')";
+            // newDiv.dataset.id = lang_id;
+            // let div = document.createElement("div");
+            // div.classList.add('hoverDiv');
+            // div.dataset.id = lang_id;
+      			// let newResult = document.createElement("h3");
+      			// newResult.innerHTML = lang_name;
+            // div.appendChild(newResult);
+            // desc.appendChild(div);
+      			// honey.appendChild(newDiv);
+            // thumbHolder.innerHTML += docFrag;
+            desc.innerHTML += div;
+            honey.innerHTML += newDiv;
           });
-          //
-          // projects.querySelectorAll("div").forEach((dataset) => {
-          //   dataset.addEventListener('click', loadProj, false);
-          // });
-          // function loadProj(index){
-          //   console.log(index.target.dataset);
-          // }
-		}
+
+          honey.querySelectorAll('.hex').forEach((dataset) => {
+            dataset.addEventListener('click', loadDesc, false);
+
+          function loadDesc(evt){
+              // console.log(evt.currentTarget.dataset);
+              let honey = document.querySelectorAll('.hoverDiv');
+              for(let i=0; i < honey.length; i++){
+                honey[i].classList.remove('select');
+              }
+              let targetId = evt.currentTarget.dataset.id;
+              let name = document.querySelector(".lang-desc [data-id='" + targetId + "']");
+                name.classList.add('select');
+            }
+          });
   }
 
 
@@ -323,11 +295,9 @@
   //     tl.to(content,2,{display:"block"});
   //   }
   window.addEventListener('load', init,false);
-  // window.addEventListener('resize', init,false);
+  // window.addEventListener('resize', checkScreenSize,false);
   // window.addEventListener('load', slideInit,false);
   window.addEventListener('resize', getScreenSize, false);
   menu.addEventListener('click', menuOpen, false);
-  about.call(document.querySelector('.download'));
-  // howIWork.call(document.querySelector('#work'));
-
+  largeQuery.addListener(checkScreenSize);
 })();

@@ -398,6 +398,7 @@ body{
 #contact {
   color: #fff;
   width: 100vw;
+  min-height: 95vh;
   text-align: center;
   .instructions{
     margin: 10vh 5vw 0 5vw;
@@ -413,6 +414,18 @@ body{
     h1 {
       font-size: 1.5rem;
       color: $grey;
+    }
+    h2, h3{
+      color: $grey;
+    }
+    button {
+      background-color: $yell;
+      padding: 20px 35px;
+      font-family: 'Medium', sans-serif;
+      text-transform: uppercase;
+      a{
+        color: #fff;
+      }
     }
     form {
       label{
@@ -977,11 +990,10 @@ footer{
     .border{
       margin: 15vw 0 20vw 0;
       padding: 2vw 5vw;
-      h1{
+      h1, h2, h3{
         color: #fff;
       }
       form{
-        // margin: 0;
         label{
           color: #fff;
         }

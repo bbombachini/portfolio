@@ -61,6 +61,9 @@ body{
   width: 100%;
   height: 100%;
 }
+.no-js #hamburg{
+  display: none;
+}
 //Classes applied on body
 .index{
   background-image: url('../img/mobile_mountains.jpg');
@@ -460,14 +463,18 @@ body{
   }
 
 }
-#mainbio{
-  .bio{
-    border: 7px solid $yell;
-    padding: 10%;
-    margin-bottom: 30%;
-    h1 {
-      color: $yell;
-      font-family: 'Light','Helvetica', 'Arial', sans-serif !important;
+.about-page{
+  #container-about{
+    #mainbio{
+      .bio{
+        border: 7px solid $yell;
+        padding: 10%;
+        margin-bottom: 30%;
+        h1 {
+          color: $yell;
+          font-family: 'Light','Helvetica', 'Arial', sans-serif !important;
+        }
+      }
     }
   }
 }
@@ -642,6 +649,15 @@ footer{
 
 //Screen breaks at 640px
 @media screen and (min-width:40rem){
+
+  .no-js #hamburg {
+    display: block;
+  }
+
+  .no-js #hamb-menu-web {
+    display: none;
+  }
+
     #landing{
       #intro{
         margin: 25vh auto;
@@ -796,13 +812,15 @@ footer{
 //Screen breaks at 1024px
 @media screen and (min-width:64rem){
   #nav-bar {
+    height: 8vw;
     #logo {
-      width: 25vw;
+      width: 18vw;
+      padding: 3%;
     }
     #hamb-menu-web{
       #menu {
         li{
-          padding: 15px 20px;
+          padding: 10px 20px;
         a {
           padding: 0;
           font-size: 18px;
@@ -816,7 +834,6 @@ footer{
             bottom: -8px;
             width: 0px;
             height: 1px;
-            // margin: 5px 0 0;
             transition: $animate;
             transition-duration: 0.75s;
             opacity: 0;
@@ -962,28 +979,31 @@ footer{
       }
     }
 }
+.about-page{
+  position: relative;
   #container-about{
     background: url('../img/medium_profile_picture.jpg') no-repeat;
     background-position: 0 50%;
-  }
-  #mainbio{
-    height: 90vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-content: center;
-    align-items: center;
-    margin-bottom: 0;
-    .bio{
-      margin: 0;
-      padding: 2vh 5vw;
-      text-align: center;
-      h1 {
-        text-align: right;
-        font-size: 1.5rem;
+    #mainbio{
+      min-height: 95vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-content: center;
+      align-items: center;
+      margin-bottom: 0;
+      .bio{
+        margin: 8vw 0 15vw 0;
+        padding: 2vh 5vw;
+        text-align: center;
+        h1 {
+          text-align: right;
+          font-size: 1.5rem;
+        }
       }
     }
   }
+}
   #contact{
     // position: relative;
     overflow: hidden;
@@ -1117,7 +1137,7 @@ footer{
       }
     }
   #nav-bar {
-    height: 10vw;
+    height: 8vw;
     #logo{
       width: 20vw;
       padding: 3%;
@@ -1130,9 +1150,12 @@ footer{
       }
     }
   }
-  #container-about{
-    background: url('../img/highmedium_profile_picture.jpg') no-repeat;
-    background-position: 10% 100%;
+  .about-page{
+    position: relative;
+    #container-about{
+      background: url('../img/highmedium_profile_picture.jpg') no-repeat;
+      background-position: 10% 100%;
+    }
   }
   #fluent{
     .honeycomb{
@@ -1184,7 +1207,6 @@ footer{
     }
   }
   #contact{
-    overflow: hidden;
     .instructions{
       margin: 20vw 0 0 2vw;
       h3{
@@ -1245,8 +1267,20 @@ footer{
         }
       }
     }
-  #container-about{
-    background: url('../img/highmedium_profile_picture.jpg') no-repeat;
+  .about-page{
+    #container-about{
+      background: url('../img/highmedium_profile_picture.jpg') no-repeat;
+      #mainbio{
+        .bio{
+          margin: 7vw 0 12vw 0;
+          text-align: left;
+          padding: 2vh 5vw 4vh 5vw;
+          h1 {
+            font-size: 2rem;
+          }
+        }
+      }
+    }
   }
   .social {
     #triangle{
@@ -1256,24 +1290,17 @@ footer{
       margin-top: 10%;
     }
   }
-  #mainbio{
-    .bio{
-      text-align: left;
-      padding: 2vh 5vw 4vh 5vw;
-      h1 {
-        font-size: 2rem;
-      }
-    }
-  }
 }
 //Screen breaks at 1600px
 @media screen and (min-width:100rem){
-  body, #container, #containerPhoto {
+  body, #container, #containerPhoto, #container-about {
     max-width: 1920px;
     margin: 0 auto;
   }
-  #container-about{
-    background: url('../img/large_profile_picture.jpg') no-repeat;
+  .about-page{
+      #container-about{
+      background: url('../img/large_profile_picture.jpg') no-repeat;
+    }
   }
     #landing{
       #intro{
@@ -1292,7 +1319,7 @@ footer{
       }
     }
   #nav-bar {
-    height: 8vw;
+    height: 6vw;
     #logo{
       padding: 2%;
       width: 15vw;
@@ -1342,20 +1369,23 @@ footer{
     }
   }
 }
-  #container-about{
-    background: url('../img/xlarge_profile_picture.jpg') no-repeat;
-  }
+.about-page{
+    #container-about{
+      background: url('../img/xlarge_profile_picture.jpg') no-repeat;
+      #mainbio{
+        .bio{
+          padding: 6vh 8vw;
+          h1 {
+            font-size: 3rem;
+          }
+        }
+      }
+    }
+}
   .social {
     #triangle{
       border-right: 1950px solid transparent;
     }
   }
-  #mainbio{
-    .bio{
-      padding: 6vh 8vw;
-      h1 {
-        font-size: 3rem;
-      }
-    }
-  }
+
 }

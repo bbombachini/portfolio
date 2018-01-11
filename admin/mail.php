@@ -12,12 +12,10 @@
     $subj = $subject;
     $extra = "Reply-To: ".$email;
     $msg =  "Name: ".$name."\n\nEmail: ".$email."\n\nComments: ".$message;
-    mail($to,$subj,$msg,$extra);
+    mail($to,$subj,$msg,$extra,'-f barbara@bombachini.com' );
     $direct = $direct."?name={$name}";
     redirect_to($direct);
   }
-
-
 
 
  ?>

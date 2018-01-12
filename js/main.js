@@ -274,7 +274,7 @@
               }
               let targetId = evt.currentTarget.dataset.id;
               let name = document.querySelector(".lang-desc [data-id='" + targetId + "']");
-                name.classList.add('select');
+              name.classList.add('select');
             }
           });
   }

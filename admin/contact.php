@@ -10,15 +10,9 @@
     $address = $_POST['address'];
     $direct = "../thankyou.php";
 
-    // echo $name;
-    // echo $email;
-    // echo $message;
-    // echo $street;
-
     if($address === ""){
       $sendMail = submitMessage($name, $email, $subject, $message, $direct);
       // echo "Street is empty";
-
     }
     // TO TEST THE LOGIC
     // else {

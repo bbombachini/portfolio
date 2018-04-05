@@ -6,7 +6,11 @@
   var screenSize;
   var request;
   var hexagon;
-  var menu = document.querySelector("#button");
+  if(document.querySelector("#button")){
+    var menu = document.querySelector("#button");
+    menu.addEventListener('click', menuOpen, false);
+  }
+
   const mediumQuery = window.matchMedia("(min-width:640px)");
   const largeQuery = window.matchMedia("(min-width:1024px)");
 
@@ -62,7 +66,7 @@
       function readMe(evt){
           // console.log(evt);
           var parag = document.querySelectorAll('.steps p');
-          // console.log(parag);
+          console.log(parag);
           parag.forEach((p)=>{
             p.style.borderBottom = "7px solid white";
           });
@@ -98,7 +102,7 @@
     else {
       screenSize = 'large';
     }
-    // console.log(screenSize);
+    console.log(screenSize);
   }
 
   function openProjects() {
@@ -246,19 +250,7 @@
                         <h3>${lang_name}</h3>
                         <p>${lang_desc}</p>
                     </div>`;
-            // let newDiv = document.createElement("div");
-            // newDiv.classList.add('hex');
-            // newDiv.style.backgroundImage = "url('img/"+lang_thumb+"')";
-            // newDiv.dataset.id = lang_id;
-            // let div = document.createElement("div");
-            // div.classList.add('hoverDiv');
-            // div.dataset.id = lang_id;
-      			// let newResult = document.createElement("h3");
-      			// newResult.innerHTML = lang_name;
-            // div.appendChild(newResult);
-            // desc.appendChild(div);
-      			// honey.appendChild(newDiv);
-            // thumbHolder.innerHTML += docFrag;
+
             desc.innerHTML += div;
             honey.innerHTML += newDiv;
           });
@@ -274,7 +266,7 @@
               }
               let targetId = evt.currentTarget.dataset.id;
               let name = document.querySelector(".lang-desc [data-id='" + targetId + "']");
-              name.classList.add('select');
+                name.classList.add('select');
             }
           });
   }
@@ -298,6 +290,5 @@
   // window.addEventListener('resize', checkScreenSize,false);
   // window.addEventListener('load', slideInit,false);
   window.addEventListener('resize', getScreenSize, false);
-  menu.addEventListener('click', menuOpen, false);
   largeQuery.addListener(checkScreenSize);
 })();

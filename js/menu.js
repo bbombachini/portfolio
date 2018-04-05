@@ -1,4 +1,5 @@
 (function() {
+  if(document.querySelector('#hamburg')){
   var hamb = document.querySelector('#hamburg');
 
   function overlayMenu(){
@@ -9,4 +10,5 @@
   }
 
   hamb.addEventListener('click', overlayMenu, false);
+  }
 })();

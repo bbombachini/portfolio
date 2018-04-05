@@ -29,7 +29,7 @@
         else {
           screenSize = 'xlarge';
         }
-        console.log(screenSize);
+        // console.log(screenSize);
       }
 
     let images = slides.images;

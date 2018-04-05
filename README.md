@@ -1,14 +1,14 @@
-# Foundation for Sites Template
+# Foundation-cli install
 
-This is the basic starter project for [Foundation for Sites 6](http://foundation.zurb.com/sites).
-It includes a Sass compiler and a starter HTML file for you.
+This project is using Foundation-cli [Foundation for Sites 6](http://foundation.zurb.com/sites).
+It includes a Sass compiler running through Gulp.
 
 ## Installation
 
-To use this template, your computer needs:
+You will need to have NodeJS installed and Bower in order to run this project.
 
 - [NodeJS](https://nodejs.org/en/) (0.12 or greater)
-- [Git](https://git-scm.com/)
+- [Bower] (https://bower.io)
 
 ### Installing dependencies
 

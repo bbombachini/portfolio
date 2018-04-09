@@ -118,9 +118,6 @@ body{
   }
 }
 
-// #containerPhoto, #container-about {
-//   height: 100vh;
-// }
 
 #nav-bar {
   position: relative;
@@ -308,7 +305,47 @@ body{
   text-align: center;
 }
 
+//Style for project page
+.project-header{
+  width: 100%;
+  position: relative;
+}
+.logo-round {
+  position: absolute;
+  // margin: 0 auto;
+  width: 30%;
+  bottom: -25%;
+  left: 35%;
+  // right: 0;
+  // top: -20px;
+  // border-radius: 50%;
+}
 
+.project-text{
+  overflow-wrap: break-word;
+  padding: 10vw 8vw;
+  .project-title{
+    font-family: 'Medium', Helvetica, Arial, sans-serif;
+    font-size: 1.8rem;
+  }
+  h3{
+    font-family: 'Light', Helvetica, Arial, sans-serif;
+    text-align: center;
+    font-size: 1.6rem;
+    margin: 20px 0;
+  }
+  .description {
+    font-style: italic;
+    background-color: #F8F8F8;
+    padding: 5vw;
+  }
+}
+
+.project-images{
+  margin-bottom: 20vw;
+}
+
+//Style for Fluent Section
 #fluent {
   background-color: $lighter;
   color: #fff;

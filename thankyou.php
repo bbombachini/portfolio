@@ -39,7 +39,7 @@
       <header>
         <div class="row">
           <div id="nav-bar" class="small-12 columns">
-              <img src="img/bombachini_logo.svg" id="logo" alt="Barbara Bombachini Logo">
+              <img src="img/bombachini_logo2.svg" id="logo" alt="Barbara Bombachini Logo">
             <div id="hamburg" data-responsive-toggle="hamb-menu3" data-hide-for="medium">
               <button id="button" type="button" data-toggle="hamb-menu3">
                 <span class="icon"></span>
@@ -54,7 +54,7 @@
               <h1 class="hidden">Main Navigation</h1>
               <ul id="menu" class="medium-horizontal menu" data-toggle-menu>
                 <li><a class="linen" id="photo" href="#">PHOTOGRAPHY</a></li>
-                <li><a class="linen" href="index.html">WEB DEV</a></li>
+                <li><a class="linen" href="webdev.html">WEB DEV</a></li>
                 <li><a class="linen" href="about.html">ABOUT</a></li>
                 <li><a class="linen active" href="contact.html">CONTACT</a></li>
               </ul>

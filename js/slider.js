@@ -9,32 +9,35 @@
       var slider = document.querySelector('#photo-land');
       var next = document.querySelector('#next');
       var previous = document.querySelector('#previous');
-      // const MIN = 320;
-      // const MEDIUM = 640;
+      const MIN = 320;
+      const MEDIUM = 640;
+      const LARGE = 1200;
       // const LARGE = 1024;
       // const XLARGE = 1200;
-      // var screenSize;
-      // getScreenSize();
+      var size;
+      getScreenSize();
+      console.log('from slider');
 
-      // function getScreenSize() {
-      //   if(window.innerWidth < MEDIUM) {
-      //     screenSize = 'small';
-      //   }
-      //   else if(window.innerWidth < LARGE) {
-      //     screenSize = 'medium';
-      //   }
-      //   else if(window.innerWidth < XLARGE) {
-      //     screenSize = 'large';
-      //   }
-      //   else {
-      //     screenSize = 'xlarge';
-      //   }
-      // }
+      function getScreenSize()
+      {
+        if(window.innerWidth < MEDIUM || window.innerWidth < MEDIUM) {
+          size = 'small';
+        }
+        else if(window.innerWidth > MEDIUM && window.innerWidth < LARGE) {
+          size = 'medium';
+        }
+        else {
+          // if(window.innerWidth > XLARGE)
+          size = 'large';
+        }
+        console.log(size);
+        console.log(window.innerWidth);
+      }
 
     let images = slides.images;
     for (let i =0; i < images.length; i++) {
       let newImg = document.createElement('img');
-       newImg.src = 'img/'+screenSize+images[i];
+       newImg.src = 'img/'+size+images[i];
        newImg.classList.add('slide');
        slider.appendChild(newImg);
       }

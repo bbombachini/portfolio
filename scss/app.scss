@@ -89,9 +89,11 @@ body{
     display: -ms-flexbox;  /* TWEENER - IE 10 */
     display: -webkit-flex;
     display: flex;
+    position: relative;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    background-image: none;
       ul#splash-menu, ul#splash-menu2 {
         display: -webkit-box;  /* OLD - iOS 6-, Safari 3.1-6, BB7 */
         display: -ms-flexbox;  /* TWEENER - IE 10 */
@@ -113,8 +115,14 @@ body{
         position: relative;
         height: 50%;
       }
-      }
-
+    }
+    #banner-video{
+      background-size: cover;
+      height: 100%;
+      z-index: -10;
+      // width: 100%;
+      position: absolute;
+    }
   }
 }
 
@@ -132,7 +140,7 @@ a {
   #logo{
     z-index: 1001;
     width: 50vw;
-    padding:10%;
+    padding:6%;
     position: absolute;
     left: 0;
   }
@@ -269,7 +277,7 @@ a {
   position: relative;
   #intro {
     margin: 10vh auto;
-    border: 7px solid $yell;
+    border: 5px solid $yell;
     h6 {
       padding-top: 10%;
       font-size: 25vw;
@@ -328,14 +336,11 @@ a {
 
 .logo-round {
   position: absolute;
-  // margin: 0 auto;
   width: 30vw;
   bottom: -40%;
   left: 35%;
-  // right: 0;
-  // top: -20px;
-  // border-radius: 50%;
-}
+  max-width: 100%;
+  }
 
 .project-text{
   overflow-wrap: break-word;
@@ -548,7 +553,7 @@ a {
     }
   }
   .border {
-    border: 7px solid $yell;
+    border: 5px solid $yell;
     padding: 5vw;
     margin: 0 5vw 15vh 5vw;
     h1 {
@@ -604,7 +609,7 @@ a {
   #container-about{
     #mainbio{
       .bio{
-        border: 7px solid $yell;
+        border: 5px solid $yell;
         padding: 10%;
         margin-bottom: 30%;
         h1 {
@@ -632,7 +637,7 @@ footer{
     @extend #text;
     span{
       font-size: 8vh;
-      top: -8vh;
+      top: -8.5vh;
     }
   }
   .about {
@@ -646,7 +651,7 @@ footer{
   padding: 10vw;
   margin: 10vw auto;
   color: #ccc;
-  border: 7px solid $yell;
+  border: 5px solid $yell;
   ul {
     padding: 10px;
     margin-left: 0;
@@ -667,6 +672,9 @@ footer{
             top: 1.4vw;
             transition: all 0.4s ease;
           }
+        }
+        a:hover{
+          background-color: $lightgrey;
         }
       }
     }
@@ -828,7 +836,13 @@ footer{
           height: 50%;
         }
         }
-
+      #banner-video{
+        // background-size: cover;
+        height: 100%;
+        // z-index: -10;
+        // width: 100%;
+        // position: absolute;
+      }
     }
   }
 
@@ -864,7 +878,7 @@ footer{
     background-color: transparent;
     #logo {
       width: 30vw;
-      padding: 5%;
+      padding: 3%;
     }
     #hamb-menu-web{
       height: auto;
@@ -1043,8 +1057,8 @@ footer{
   #nav-bar {
     height: 8vw;
     #logo {
-      width: 18vw;
-      padding: 3%;
+      width: 23vw;
+      padding: 2%;
     }
     #hamb-menu-web{
       #menu {
@@ -1092,6 +1106,15 @@ footer{
       }
     }
   }
+#container.splash{
+  #landing-splash.sections{
+    #banner-video{
+      background-size: cover;
+      height: auto;
+      min-width: 103%;
+    }
+  }
+}
   .logo-round {
     width: 20vw;
     bottom: -35%;
@@ -1394,7 +1417,7 @@ footer{
   #nav-bar {
     height: 8vw;
     #logo{
-      width: 20vw;
+      width: 22vw;
       // padding: 3%;
     }
     #hamb-menu-web{
@@ -1617,12 +1640,21 @@ footer{
 }
 //Screen breaks at 1920px
 @media screen and (min-width:120rem){
+.logo-round{
+  bottom: -120px;
+  max-width: 340px;
+}
 #landing{
   #intro{
     #thunder{
       -ms-grid-column-align: end;
       align-self: end;
     }
+  }
+}
+#nav-bar {
+  #logo{
+    width: 23vw;
   }
 }
 .about-page{
@@ -1643,5 +1675,4 @@ footer{
       border-right: 1950px solid transparent;
     }
   }
-
 }

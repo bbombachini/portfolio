@@ -63,7 +63,7 @@
         <a href="../webdev.html" class="back-btn">
           <i class="fa fa-3x fa-chevron-circle-left"></i>
         </a>
-        <img src="../img/large<?php echo $rows[0]['project_header']; ?>" alt="<?php echo $row['project_name']; ?>">
+        <img class="media-change" src="../img/small<?php echo $rows[0]['project_header']; ?>" alt="<?php echo $row['project_name']; ?>">
       </div>
       <!-- <div class="logo-round"> -->
         <img class="logo-round" src="../img/<?php echo $rows[0]['project_cover']; ?>" alt="<?php echo $row['project_name']; ?>">
@@ -80,21 +80,21 @@
       <p class="description"><?php echo $rows[0]['project_description']; ?></p>
 
       <?php
-        if($rows[0]['project_text1'] != null || $rows[0]['project_text1'] != ""){
+        if($rows[0]['project_problem'] != null || $rows[0]['project_problem'] != ""){
           echo "<h3>The Problem</h3>
-            <p>".$rows[0]['project_text1']."</p>";
+            <p>".$rows[0]['project_problem']."</p>";
       }?>
 
        <?php
-         if($rows[0]['project_text2'] != null || $rows[0]['project_text2'] != ""){
+         if($rows[0]['project_solution'] != null || $rows[0]['project_solution'] != ""){
            echo "<h3>The Solution</h3>
-             <p>".$rows[0]['project_text2']."</p>";
+             <p>".$rows[0]['project_solution']."</p>";
        }?>
 
         <?php
-          if($rows[0]['project_text3'] != null || $rows[0]['project_text3'] != ""){
+          if($rows[0]['project_tech'] != null || $rows[0]['project_tech'] != ""){
             echo "<h3>Process and Technology Used</h3>
-              <p>".$rows[0]['project_text3']."</p>";
+              <p>".$rows[0]['project_tech']."</p>";
         }?>
 
         <?php
@@ -109,7 +109,7 @@
       if($newRows != null || $newRows != ""){
         echo "<div class=\"project-images\">";
         foreach ($newRows as $img) {
-          echo "<img src=\"../img/large".$img['project_img']."\" alt=\"".$rows[0]['project_name']." project photo.\">";
+          echo "<img class=\"media-change\" src=\"../img/small".$img['project_img']."\" alt=\"".$rows[0]['project_name']." project photo.\">";
         }
         echo"</div>";
       }

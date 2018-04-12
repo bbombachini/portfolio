@@ -136,9 +136,9 @@
       let newDiv = `<a href="portfolio/project.php?project=${project_name}&id=${project_id}"><div class="proj-div"><img src="img/`+screenSize+`${project_thumb}" data-id="${project_id}"><h3 class="title" data-id="${project_id}">${project_name}</h3></div></a>`;
       projects.innerHTML += newDiv;
     });
-    projects.querySelectorAll("div").forEach((data) => {
-      data.addEventListener('click', loadProj, false);
-    });
+    // projects.querySelectorAll("div").forEach((data) => {
+    //   data.addEventListener('click', loadProj, false);
+    // });
 
 
   // function loadProj(index){

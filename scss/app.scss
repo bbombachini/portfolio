@@ -120,6 +120,8 @@ body{
 
 a {
   color: $yell;
+} a:hover{
+  color: $grey;
 }
 
 
@@ -313,7 +315,17 @@ a {
 .project-header{
   width: 100%;
   position: relative;
+  .back-btn{
+    width: 30px;
+    i{
+      width: 100px;
+      padding: 30px;
+      position: absolute;
+    }
+
+  }
 }
+
 .logo-round {
   position: absolute;
   // margin: 0 auto;
@@ -674,6 +686,8 @@ footer{
     }
   }
 }
+
+
 
 #copyright{
     margin: 0 auto;

@@ -17,21 +17,27 @@
   function checkScreenSize(largeQuery){
     if (largeQuery.matches) {
       openProjects();
-      openHex();
       howIWork();
+      if(document.querySelector('#fluent')){
+        openHex();
+      }
     } else if(mediumQuery.matches) {
       openProjects();
-      openHex();
       howIWork();
+      if(document.querySelector('#fluent')){
+        openHex();
+      }
     }
   }
 
   function init() {
     getScreenSize();
     openProjects();
-    openHex();
     howIWork();
+    if(document.querySelector('#fluent')){
+      openHex();
     }
+  }
 
   function menuOpen() {
     if(menu.classList.contains('open')){
@@ -127,82 +133,73 @@
     }
 
     proj.forEach(({project_id, project_name, project_thumb}) =>{
-      let newDiv = document.createElement("div");
-      let newImg = document.createElement("img");
-      newImg.src = 'img/'+screenSize+project_thumb;
-      newImg.dataset.id = project_id;
-      let newResult = document.createElement('h3');
-      newResult.classList.add('title');
-      newResult.innerHTML = project_name;
-      newResult.dataset.id = project_id;
-      newDiv.classList.add('proj-div');
-      newDiv.append(newImg, newResult);
-      projects.appendChild(newDiv);
+      let newDiv = `<a href="portfolio/project.php?project=${project_name}&id=${project_id}"><div class="proj-div"><img src="img/`+screenSize+`${project_thumb}" data-id="${project_id}"><h3 class="title" data-id="${project_id}">${project_name}</h3></div></a>`;
+      projects.innerHTML += newDiv;
     });
     projects.querySelectorAll("div").forEach((data) => {
       data.addEventListener('click', loadProj, false);
     });
 
 
-  function loadProj(index){
-    // console.log(index.target.dataset.id);
-    let openNew = 'admin/controller.php?proj='+index.target.dataset.id;
-
-    fetch(openNew)
-      .then((resp) => resp.json())//convert result to json
-        .then((info) => {
-          // console.log(info);
-          openLightBox(info); })
-          .catch(function(error){
-            console.log(error);
-          });
-
-
-  function openLightBox(project){
-      if(project !== null){
-          var body = document.body;
-          let box = document.querySelector('.lightbox');
-          let boxCover = box.querySelector('.cover-img');
-          let boxImg = box.querySelector('.box-img');
-          let boxClose = document.querySelector('.close-box');
-          let boxHeader = box.querySelector('.header');
-          let text = box.querySelector('.proj-text');
-          while(text.firstChild) {
-             text.removeChild(text.firstChild);
-           }
-            body.classList.add('noscroll');
-            box.style.display = "block";
-            boxCover.src = "img/"+ project.project_cover;
-            boxImg.src = "img/"+screenSize+ project.project_img;
-            boxHeader.style.backgroundColor = project.project_colour;
-            let boxTitle = document.createElement('h1');
-            boxTitle.innerHTML = project.project_name;
-            text.appendChild(boxTitle);
-              if(project.project_client !== null){
-                var client = document.createElement('p');
-                client.innerHTML = project.project_client;
-                text.appendChild(client);
-              }
-            let boxDesc = document.createElement('p');
-            boxDesc.innerHTML = project.project_description;
-            text.appendChild(boxDesc);
-              if(project.project_url !== null){
-
-                let url = document.createElement('a');
-                let text = box.querySelector('.proj-text');
-                url.href = project.project_url;
-                url.innerHTML = project.project_url;
-                text.appendChild(url);
-              }
-            boxClose.addEventListener('click', closeBox, false);
-
-            function closeBox() {
-              box.style.display = 'none';
-              body.classList.remove('noscroll');
-            }
-        }
-      }
-    }
+  // function loadProj(index){
+  //   // console.log(index.target.dataset.id);
+  //   let openNew = 'admin/controller.php?proj='+index.target.dataset.id;
+  //
+  //   fetch(openNew)
+  //     .then((resp) => resp.json())//convert result to json
+  //       .then((info) => {
+  //         // console.log(info);
+  //         openLightBox(info); })
+  //         .catch(function(error){
+  //           console.log(error);
+  //         });
+  //
+  //
+  // function openLightBox(project){
+  //     if(project !== null){
+  //         var body = document.body;
+  //         let box = document.querySelector('.lightbox');
+  //         let boxCover = box.querySelector('.cover-img');
+  //         let boxImg = box.querySelector('.box-img');
+  //         let boxClose = document.querySelector('.close-box');
+  //         let boxHeader = box.querySelector('.header');
+  //         let text = box.querySelector('.proj-text');
+  //         while(text.firstChild) {
+  //            text.removeChild(text.firstChild);
+  //          }
+  //           body.classList.add('noscroll');
+  //           box.style.display = "block";
+  //           boxCover.src = "img/"+ project.project_cover;
+  //           boxImg.src = "img/"+screenSize+ project.project_img;
+  //           boxHeader.style.backgroundColor = project.project_colour;
+  //           let boxTitle = document.createElement('h1');
+  //           boxTitle.innerHTML = project.project_name;
+  //           text.appendChild(boxTitle);
+  //             if(project.project_client !== null){
+  //               var client = document.createElement('p');
+  //               client.innerHTML = project.project_client;
+  //               text.appendChild(client);
+  //             }
+  //           let boxDesc = document.createElement('p');
+  //           boxDesc.innerHTML = project.project_description;
+  //           text.appendChild(boxDesc);
+  //             if(project.project_url !== null){
+  //
+  //               let url = document.createElement('a');
+  //               let text = box.querySelector('.proj-text');
+  //               url.href = project.project_url;
+  //               url.innerHTML = project.project_url;
+  //               text.appendChild(url);
+  //             }
+  //           boxClose.addEventListener('click', closeBox, false);
+  //
+  //           function closeBox() {
+  //             box.style.display = 'none';
+  //             body.classList.remove('noscroll');
+  //           }
+  //       }
+  //     }
+  //   }
   }
 
     function setFilter(){

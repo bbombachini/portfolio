@@ -9,28 +9,27 @@
       var slider = document.querySelector('#photo-land');
       var next = document.querySelector('#next');
       var previous = document.querySelector('#previous');
-      const MIN = 320;
-      const MEDIUM = 640;
-      const LARGE = 1024;
-      const XLARGE = 1200;
-      var screenSize;
-      getScreenSize();
+      // const MIN = 320;
+      // const MEDIUM = 640;
+      // const LARGE = 1024;
+      // const XLARGE = 1200;
+      // var screenSize;
+      // getScreenSize();
 
-      function getScreenSize() {
-        if(window.innerWidth < MEDIUM) {
-          screenSize = 'small';
-        }
-        else if(window.innerWidth < LARGE) {
-          screenSize = 'medium';
-        }
-        else if(window.innerWidth < XLARGE) {
-          screenSize = 'large';
-        }
-        else {
-          screenSize = 'xlarge';
-        }
-        // console.log(screenSize);
-      }
+      // function getScreenSize() {
+      //   if(window.innerWidth < MEDIUM) {
+      //     screenSize = 'small';
+      //   }
+      //   else if(window.innerWidth < LARGE) {
+      //     screenSize = 'medium';
+      //   }
+      //   else if(window.innerWidth < XLARGE) {
+      //     screenSize = 'large';
+      //   }
+      //   else {
+      //     screenSize = 'xlarge';
+      //   }
+      // }
 
     let images = slides.images;
     for (let i =0; i < images.length; i++) {

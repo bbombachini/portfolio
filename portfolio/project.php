@@ -1,20 +1,25 @@
 <?php
   include('../admin/connect.php');
+
   ini_set('display_errors',1);
   error_reporting(E_ALL);
 
   if(isset($_GET['id'])) {
     $catch = $_GET['id'];
-    $query = "SELECT * FROM tbl_projects, tbl_proj_img WHERE tbl_projects.project_id = tbl_proj_img.project_id AND tbl_projects.project_id=".$catch;
+    $query = "SELECT * FROM tbl_projects WHERE project_id=".$catch;
     $result = mysqli_query($link, $query);
     $rows = array();
    while($row = mysqli_fetch_assoc($result)) {
      $rows[] = $row;
    }
-
-   // echo json_encode($rows);
-    // $row = mysqli_fetch_assoc($result);
-    // echo json_encode($row);
+   $projQuery = "SELECT project_img FROM tbl_proj_img WHERE project_id=".$catch;
+   $newResult = mysqli_query($link, $projQuery);
+   $newRows = array();
+  while($newRow = mysqli_fetch_assoc($newResult)) {
+    $newRows[] = $newRow;
+  }
+  // echo json_encode($newRows);
+  // echo json_encode($rows);
   }
 
  ?>
@@ -66,7 +71,7 @@
       <h3 class="project-title"><?php echo $rows[0]['project_name']; ?> Project</h3>
       <?php
       if($rows[0]['project_client'] != null || $rows[0]['project_client'] != ""){
-        echo "<h4>Client:<span>".$rows[0]['project_client']."</span></h4>";
+        echo "<h3>Client: <span>".$rows[0]['project_client']."</span></h3>";
       }
       ?>
       <p class="description"><?php echo $rows[0]['project_description']; ?></p>
@@ -92,23 +97,24 @@
         <?php
         if($rows[0]['project_url'] != null || $rows[0]['project_url'] != ""){
           echo "<h4>See the project here:</h4>
-          <span>".$rows[0]['project_url']."</span>";
+          <a href=\"".$rows[0]['project_url']."\">".$rows[0]['project_url']."</a>";
         }
         ?>
-
     </article>
 
     <?php
-      if($rows[0]['project_img'] != null || $rows[0]['project_img'] != ""){
-        echo "<div class=\"project-images\">
-          <img src=\"../img/large".$rows[0]['project_img']."\" alt=\"\">
-        </div>";
+      if($newRows != null || $newRows != ""){
+        echo "<div class=\"project-images\">";
+        foreach ($newRows as $img) {
+          echo "<img src=\"../img/large".$img['project_img']."\" alt=\"".$rows[0]['project_name']." project photo.\">";
+        }
+        echo"</div>";
       }
      ?>
 
 
     <footer>
-      <div id="text">
+      <div id="text-proj">
           <span><?php echo $rows[0]['project_name']; ?></span>
       </div>
       <div class="about row">

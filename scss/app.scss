@@ -118,6 +118,10 @@ body{
   }
 }
 
+a {
+  color: $yell;
+}
+
 
 #nav-bar {
   position: relative;
@@ -313,8 +317,8 @@ body{
 .logo-round {
   position: absolute;
   // margin: 0 auto;
-  width: 30%;
-  bottom: -25%;
+  width: 30vw;
+  bottom: -40%;
   left: 35%;
   // right: 0;
   // top: -20px;
@@ -323,16 +327,18 @@ body{
 
 .project-text{
   overflow-wrap: break-word;
-  padding: 10vw 8vw;
-  .project-title{
-    font-family: 'Medium', Helvetica, Arial, sans-serif;
-    font-size: 1.8rem;
-  }
+  padding: 15vw 8vw;
   h3{
-    font-family: 'Light', Helvetica, Arial, sans-serif;
+    font-family: 'Thin', Helvetica, Arial, sans-serif;
     text-align: center;
     font-size: 1.6rem;
     margin: 20px 0;
+    color: $grey;
+  }
+  .project-title{
+    font-family: 'Medium', Helvetica, Arial, sans-serif;
+    font-size: 2rem;
+    color: $lightgrey;
   }
   .description {
     font-style: italic;
@@ -343,6 +349,11 @@ body{
 
 .project-images{
   margin-bottom: 20vw;
+  width: 100%;
+  img{
+    width: 100%;
+    margin: 0 auto;
+  }
 }
 
 //Style for Fluent Section
@@ -605,6 +616,13 @@ footer{
       top: -14vh;
     }
   }
+  #text-proj{
+    @extend #text;
+    span{
+      font-size: 8vh;
+      top: -8vh;
+    }
+  }
   .about {
     margin-top: 50px;
     padding: 0;
@@ -723,6 +741,9 @@ footer{
     grid-template-columns: 1fr 1fr;
     -ms-grid-rows: auto;
     grid-template-rows: auto;
+    a{
+      color: $grey;
+    }
     }
     .lightbox{
       display: none;
@@ -965,6 +986,12 @@ footer{
         top: -19vw;
       }
     }
+    #text-proj{
+      span{
+        font-size: 13vh;
+        top: -13vh;
+      }
+    }
   }
 #social {
       ul {
@@ -1051,6 +1078,20 @@ footer{
       }
     }
   }
+  .logo-round {
+    width: 20vw;
+    bottom: -35%;
+    left: 40%;
+    // right: 0;
+    // top: -20px;
+    // border-radius: 50%;
+  }
+  .project-text{
+    .project-title{
+      font-size: 3rem;
+    }
+  }
+
   .sections:nth-child(1){
     background-image: url('../img/largem_mountains.jpg');
   }

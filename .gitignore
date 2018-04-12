@@ -4,3 +4,4 @@ node_modules
 npm-debug.log
 connect.php
 .sass-cache/
+img/raw/

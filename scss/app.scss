@@ -117,6 +117,7 @@ body{
       }
     }
     #banner-video{
+      object-fit: cover;
       background-size: cover;
       height: 100%;
       z-index: -10;
@@ -540,6 +541,14 @@ a {
   opacity:1;
 }
 
+.all-center{
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+}
+
 #contact {
   color: #fff;
   width: 100vw;
@@ -594,17 +603,22 @@ a {
   -webkit-clip-path: circle(50% at 50% 50%);
   clip-path: circle(50% at 50% 50%);
 }
-.download {
-  cursor: pointer;
-  padding: 14px;
-  background-color: $yell;
-  a{
-    font-size: 14px;
-    font-family: 'Medium', 'Helvetica', 'Arial', sans-serif;
-    color:#fff;
+#button-grid{
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  justify-content: space-around;
+  .download {
+    cursor: pointer;
+    padding: 14px;
+    background-color: $yell;
+    a{
+      font-size: 14px;
+      font-family: 'Medium', 'Helvetica', 'Arial', sans-serif;
+      color:#fff;
+    }
   }
-
 }
+
 .about-page{
   #container-about{
     #mainbio{
@@ -616,6 +630,7 @@ a {
           color: $yell;
           font-family: 'Light','Helvetica', 'Arial', sans-serif !important;
         }
+
       }
     }
   }
@@ -837,7 +852,7 @@ footer{
         }
         }
       #banner-video{
-        // background-size: cover;
+        object-fit: cover;
         height: 100%;
         // z-index: -10;
         // width: 100%;
@@ -1109,6 +1124,7 @@ footer{
 #container.splash{
   #landing-splash.sections{
     #banner-video{
+      object-fit: cover;
       background-size: cover;
       height: auto;
       min-width: 103%;
@@ -1539,7 +1555,7 @@ footer{
     #landing{
       #intro{
         padding: 6vw 0;
-        margin: 20vh auto 10vh auto;
+        margin: 23vh auto 10vh auto;
         #thunder{
           // padding-left: 10%;
         }
@@ -1654,7 +1670,8 @@ footer{
 }
 #nav-bar {
   #logo{
-    width: 23vw;
+    max-width: 20vw;
+    padding: 1.6%;
   }
 }
 .about-page{

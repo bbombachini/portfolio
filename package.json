@@ -22,7 +22,7 @@
   "scripts": {
     "start": "gulp",
     "build": "gulp sass",
-    "test": "karma start --single-run --browsers PhantomJS"
+    "test": "karma start --browsers Firefox --single-run"
   },
   "repository": {
     "type": "git",
@@ -34,8 +34,5 @@
   },
   "author": "ZURB <foundation@zurb.com>",
   "license": "MIT",
-  "private": true,
-  "dependencies": {
-    "gulp-autoprefixer": "^3.1.0"
-  }
+  "private": true
 }

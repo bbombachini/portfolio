@@ -2,8 +2,8 @@
   'use strict';
   const MIN = 320;
   const MEDIUM = 640;
-  const LARGE = 1024;
-  var screenSize;
+  const LARGE = 1200;
+  let screensize;
   var request;
   var hexagon;
   if(document.querySelector("#button")){
@@ -81,7 +81,7 @@
            result.removeChild(result.firstChild);
           }
           let i = evt.target.id;
-          if(screenSize == 'medium' || screenSize == 'large'){
+          if(screensize == 'medium' || screensize == 'large'){
             let icon = document.createElement('img');
             icon.classList.add('icon');
             icon.src = "img/"+ newjson[i].steps_img;
@@ -100,15 +100,15 @@
 
   function getScreenSize() {
     if(window.innerWidth < MEDIUM) {
-      screenSize = 'small';
+      screensize = 'small';
     }
     else if(window.innerWidth < LARGE) {
-      screenSize = 'medium';
+      screensize = 'medium';
     }
     else {
-      screenSize = 'large';
+      screensize = 'large';
     }
-    console.log(screenSize);
+    // console.log(screenSize);
   }
 
   function openProjects() {
@@ -133,12 +133,12 @@
     }
 
     proj.forEach(({project_id, project_name, project_thumb}) =>{
-      let newDiv = `<a href="portfolio/project.php?project=${project_name}&id=${project_id}"><div class="proj-div"><img src="img/`+screenSize+`${project_thumb}" data-id="${project_id}"><h3 class="title" data-id="${project_id}">${project_name}</h3></div></a>`;
+      let newDiv = `<a href="portfolio/project.php?project=${project_name}&id=${project_id}"><div class="proj-div"><img src="img/`+screensize+`${project_thumb}" data-id="${project_id}"><h3 class="title" data-id="${project_id}">${project_name}</h3></div></a>`;
       projects.innerHTML += newDiv;
     });
-    projects.querySelectorAll("div").forEach((data) => {
-      data.addEventListener('click', loadProj, false);
-    });
+    // projects.querySelectorAll("div").forEach((data) => {
+    //   data.addEventListener('click', loadProj, false);
+    // });
 
 
   // function loadProj(index){

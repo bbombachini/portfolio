@@ -42,25 +42,38 @@
      <meta property="og:image:alt" content="Barbara Bombachini Website">
      <meta property="og:site_name" content="Barbara Bombachini Website">
      <meta name="author" content="Barbara Bombachini">
-     <link rel="apple-touch-icon" sizes="144x144" href="../img/favicon/apple-touch-icon.png">
-     <link rel="icon" type="image/png" sizes="32x32" href="../img/favicon/favicon-32x32.png">
-     <link rel="icon" type="image/png" sizes="16x16" href="../img/favicon/favicon-16x16.png">
-     <link rel="manifest" href="../img/favicon/manifest.json">
-     <link rel="mask-icon" href="../img/favicon/safari-pinned-tab.svg" color="#5bbad5">
-     <link rel="shortcut icon" href="img/favicon/favicon.ico">
-     <meta name="msapplication-config" content="../img/favicon/browserconfig.xml">
+     <link rel="apple-touch-icon" sizes="144x144" href="../favicon/apple-touch-icon.png">
+     <link rel="icon" type="image/png" sizes="32x32" href="../favicon/favicon-32x32.png">
+     <link rel="icon" type="image/png" sizes="16x16" href="../favicon/favicon-16x16.png">
+     <link rel="manifest" href="../favicon/manifest.json">
+     <link rel="mask-icon" href="../favicon/safari-pinned-tab.svg" color="#5bbad5">
+     <link rel="shortcut icon" href="../favicon/favicon.ico">
+     <meta name="msapplication-config" content="../favicon/browserconfig.xml">
      <meta name="theme-color" content="#ffffff">
      <title>Barbara Bombachini | Photo | Web</title>
      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
      <link rel="stylesheet" href="../css/app.css">
+     <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-81029113-1', 'auto');
+      ga('send', 'pageview');
+
+     </script>
   </head>
   <body>
     <div id="container">
 
 
     <header class="project-header">
-      <div >
-        <img src="../img/large<?php echo $rows[0]['project_header']; ?>" alt="<?php echo $row['project_name']; ?>">
+      <div>
+        <a href="../webdev.html" class="back-btn">
+          <i class="fa fa-3x fa-chevron-circle-left"></i>
+        </a>
+        <img class="media-change" src="../img/small<?php echo $rows[0]['project_header']; ?>" alt="<?php echo $row['project_name']; ?>">
       </div>
       <!-- <div class="logo-round"> -->
         <img class="logo-round" src="../img/<?php echo $rows[0]['project_cover']; ?>" alt="<?php echo $row['project_name']; ?>">
@@ -77,21 +90,21 @@
       <p class="description"><?php echo $rows[0]['project_description']; ?></p>
 
       <?php
-        if($rows[0]['project_text1'] != null || $rows[0]['project_text1'] != ""){
+        if($rows[0]['project_problem'] != null || $rows[0]['project_problem'] != ""){
           echo "<h3>The Problem</h3>
-            <p>".$rows[0]['project_text1']."</p>";
+            <p>".$rows[0]['project_problem']."</p>";
       }?>
 
        <?php
-         if($rows[0]['project_text2'] != null || $rows[0]['project_text2'] != ""){
+         if($rows[0]['project_solution'] != null || $rows[0]['project_solution'] != ""){
            echo "<h3>The Solution</h3>
-             <p>".$rows[0]['project_text2']."</p>";
+             <p>".$rows[0]['project_solution']."</p>";
        }?>
 
         <?php
-          if($rows[0]['project_text3'] != null || $rows[0]['project_text3'] != ""){
+          if($rows[0]['project_tech'] != null || $rows[0]['project_tech'] != ""){
             echo "<h3>Process and Technology Used</h3>
-              <p>".$rows[0]['project_text3']."</p>";
+              <p>".$rows[0]['project_tech']."</p>";
         }?>
 
         <?php
@@ -106,7 +119,7 @@
       if($newRows != null || $newRows != ""){
         echo "<div class=\"project-images\">";
         foreach ($newRows as $img) {
-          echo "<img src=\"../img/large".$img['project_img']."\" alt=\"".$rows[0]['project_name']." project photo.\">";
+          echo "<img class=\"media-change\" src=\"../img/small".$img['project_img']."\" alt=\"".$rows[0]['project_name']." project photo.\">";
         }
         echo"</div>";
       }
@@ -156,16 +169,7 @@
     <script src="../bower_components/what-input/dist/what-input.js"></script>
     <script src="../bower_components/foundation-sites/dist/js/foundation.js"></script>
     <script type="text/javascript" src="../js/build/build.min.js"></script>
-    <script>
-     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-     m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-     })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
-     ga('create', 'UA-81029113-1', 'auto');
-     ga('send', 'pageview');
-
-    </script>
 
   </body>
 </html>

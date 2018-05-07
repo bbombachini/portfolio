@@ -16,11 +16,13 @@
     "gulp-load-plugins": "^1.1.0",
     "gulp-rename": "^1.2.2",
     "gulp-sass": "^2.1.0",
-    "gulp-uglify": "^3.0.0"
+    "gulp-uglify": "^3.0.0",
+    "karma": "^2.0.2"
   },
   "scripts": {
     "start": "gulp",
-    "build": "gulp sass"
+    "build": "gulp sass",
+    "test": "karma start --single-run --browsers PhantomJS"
   },
   "repository": {
     "type": "git",

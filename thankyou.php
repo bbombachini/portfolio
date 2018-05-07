@@ -20,17 +20,27 @@
     <meta property="og:image:alt" content="Barbara Bombachini Website">
     <meta property="og:site_name" content="Barbara Bombachini Website">
     <meta name="author" content="Barbara Bombachini">
-    <link rel="apple-touch-icon" sizes="144x144" href="img/favicon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="img/favicon/favicon-16x16.png">
-    <link rel="manifest" href="img/favicon/manifest.json">
-    <link rel="mask-icon" href="img/favicon/safari-pinned-tab.svg" color="#5bbad5">
-    <link rel="shortcut icon" href="img/favicon/favicon.ico">
-    <meta name="msapplication-config" content="img/favicon/browserconfig.xml">
+    <link rel="apple-touch-icon" sizes="144x144" href="favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+    <link rel="manifest" href="favicon/manifest.json">
+    <link rel="mask-icon" href="favicon/safari-pinned-tab.svg" color="#5bbad5">
+    <link rel="shortcut icon" href="favicon/favicon.ico">
+    <meta name="msapplication-config" content="favicon/browserconfig.xml">
     <meta name="theme-color" content="#ffffff">
     <title>Barbara Bombachini | Photo | Web</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/app.css">
+    <script>
+     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+     m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+     })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+     ga('create', 'UA-81029113-1', 'auto');
+     ga('send', 'pageview');
+
+    </script>
   </head>
   <body class="contact">
     <h1 class="hidden">Barbara Bombachini Website</h1>
@@ -39,7 +49,7 @@
       <header>
         <div class="row">
           <div id="nav-bar" class="small-12 columns">
-              <img src="img/bombachini_logo.svg" id="logo" alt="Barbara Bombachini Logo">
+              <img src="img/bombachini_logo2.svg" id="logo" alt="Barbara Bombachini Logo">
             <div id="hamburg" data-responsive-toggle="hamb-menu3" data-hide-for="medium">
               <button id="button" type="button" data-toggle="hamb-menu3">
                 <span class="icon"></span>
@@ -53,8 +63,8 @@
             <nav id="nav">
               <h1 class="hidden">Main Navigation</h1>
               <ul id="menu" class="medium-horizontal menu" data-toggle-menu>
-                <li><a class="linen" id="photo" href="#">PHOTOGRAPHY</a></li>
-                <li><a class="linen" href="index.html">WEB DEV</a></li>
+                <li><a class="linen" id="photo" href="http://bombachiniphoto.com">PHOTOGRAPHY</a></li>
+                <li><a class="linen" href="webdev.html">WEB DEV</a></li>
                 <li><a class="linen" href="about.html">ABOUT</a></li>
                 <li><a class="linen active" href="contact.html">CONTACT</a></li>
               </ul>
@@ -134,15 +144,6 @@
     <script src="bower_components/what-input/dist/what-input.js"></script>
     <script src="bower_components/foundation-sites/dist/js/foundation.js"></script>
     <script type="text/javascript" src="js/build/build.min.js"></script>
-    <script>
-     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-     m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-     })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
-     ga('create', 'UA-81029113-1', 'auto');
-     ga('send', 'pageview');
-
-    </script>
   </body>
 </html>
